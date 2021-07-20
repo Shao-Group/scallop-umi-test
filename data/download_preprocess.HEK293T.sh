@@ -1,0 +1,18 @@
+#!/bin/bash
+
+dir=`pwd`
+
+# step 1: download
+if [ "A" == "A" ];then
+        cd $dir
+	wget ftp://ftp.ebi.ac.uk/pub/databases/microarray/data/experiment/MTAB/E-MTAB-8735/Smartseq3.diySpike.R1.fastq.gz
+	wget ftp://ftp.ebi.ac.uk/pub/databases/microarray/data/experiment/MTAB/E-MTAB-8735/Smartseq3.diySpike.R2.fastq.gz
+	wget ftp://ftp.ebi.ac.uk/pub/databases/microarray/data/experiment/MTAB/E-MTAB-8735/Smartseq3.diySpike.I1.fastq.gz
+	wget ftp://ftp.ebi.ac.uk/pub/databases/microarray/data/experiment/MTAB/E-MTAB-8735/Smartseq3.diySpike.I2.fastq.gz
+fi
+
+# step 2: preprocess
+if [ "A" == "A" ];then
+        cd $dir
+	/path/to/zUMIs/zUMIs.sh -c -y HEK293T.yaml
+fi
