@@ -1,12 +1,12 @@
 # Overview
 
-This repository tests and compares the performance of our released transcript assembly method
+This repository tests and compares the performance of transcript assembler
 [**Scallop2**](https://github.com/Kingsford-Group/scallop2) with other three leading transcript assemblers,
 [StringTie2](https://github.com/gpertea/stringtie),
 [Scallop](https://github.com/Kingsford-Group/scallop) and
-[CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2)
+[CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2).
 Here we provide scripts to download datasets, run the three methods, evaluated the
-predicted transcripts, and reproduce the results and figures in the paper.
+predicted transcripts, and reproduce the results and figures in the manuscript (under review).
 
 The pipeline involves in the followint four steps:
 
@@ -72,7 +72,7 @@ Our experiments involve the following four programs:
 
 Program | Version | Description
 ------------ | ------------ | ------------ 
-[Scallop2](ttps://github.com/Shao-Group/Scallop2) | v1.1.1 | Transcript assembler
+[Scallop2](https://github.com/Shao-Group/Scallop2) | v1.1.1 | Transcript assembler
 [StringTie2](https://ccb.jhu.edu/software/stringtie/) | v2.1.7 | Transcript assembler
 [Scallop](https://github.com/Kingsford-Group/scallop) | v0.10.5 | Transcript assembler
 [CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2) | v.2.1.7 | Transcript assembler
