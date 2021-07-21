@@ -24,27 +24,23 @@ In directory `data`, we provide metadata for these datasets, and also provide sc
 The first dataset, namely **HEK293T**,
 contains 192 human cells downloaded from [Smart-seq3 project (2020)](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-8735).
 All these cells are sequenced with strand-specific and multiple-end protocol using barcoding technology.
-For the raw sequencing data, we demultiplex and preprocess using zUMIs tool, in which STAR will be called to generate reads alignments.
+For the raw sequencing data, we demultiplex and preprocess using [zUMIs](https://github.com/sdparekh/zUMIs) tool, in which [STAR](https://github.com/alexdobin/STAR) will be called to generate reads alignments.
 This dataset can be downloaded and preprocessed by the script in `data` directory.
 ```
 ./download_preprocess.HEK293T.sh
 ```
-The downloaded files will appear under `data/HEK293T`.
-[zUMIs](https://github.com/sdparekh/zUMIs), and
-[STAR](https://github.com/alexdobin/STAR).
+The downloaded files will appear under `data`.
 
 ## **Mouse-Fibroblast**
 The second dataset, namely **Mouse-Fibroblast**,
 contains 369 mouse cells downloaded from [Smart-seq3 project (2020)](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-8735).
 All these cells are sequenced with strand-specific and multiple-end protocol using barcoding technology.
-For the raw sequencing data, we demultiplex and preprocess using zUMIs tool, in which STAR will be called to generate reads alignments.
+For the raw sequencing data, we demultiplex and preprocess using [zUMIs](https://github.com/sdparekh/zUMIs) tool, in which [STAR](https://github.com/alexdobin/STAR) will be called to generate reads alignments.
 This dataset can be downloaded and preprocessed by the script in `data` directory.
 ```
 ./download_preprocess.Mouse-Fibroblast.sh
 ```
-The downloaded files will appear under `data/Mouse-Fibroblast`.
-[zUMIs](https://github.com/sdparekh/zUMIs), and
-[STAR](https://github.com/alexdobin/STAR).
+The downloaded files will appear under `data`.
 
 ## **ENCODE10**
 The third dataset, namely **ENCODE10**,
@@ -63,7 +59,7 @@ Use the following script in `data` to download annotations and c:
 ```
 ./download_index.annotation.sh
 ```
-The downloaded files will appear under `data/ensembl`.
+The downloaded files will appear under `data/human` and 'data/mouse'.
 
 
 # Programs
@@ -106,5 +102,5 @@ Once the results have been generated, one can use the following scripts in `plot
 ```
 ./build.figures.sh
 ```
-You may need to install Python packages `matplotlib`, `numpy` and `pandas`.
-
+You may need to install Python packages `matplotlib` and `numpy`.
+The figrues will appear under `plots/HEK293T/figure`, `plots/Mouse-Fibroblast/figure` and `plots/ENCODE10/figure`.
