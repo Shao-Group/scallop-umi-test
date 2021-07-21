@@ -102,5 +102,5 @@ Once the results have been generated, one can use the following scripts in `plot
 ```
 ./build.figures.sh
 ```
-You may need to install Python packages `matplotlib` and `numpy`.
+You may need to install Python3 packages `matplotlib` and `numpy`.
 The figrues will appear under `plots/HEK293T/figure`, `plots/Mouse-Fibroblast/figure` and `plots/ENCODE10/figure`.
