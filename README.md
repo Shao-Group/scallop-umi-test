@@ -72,6 +72,7 @@ Program | Version | Description
 [StringTie2](https://ccb.jhu.edu/software/stringtie/) | v2.1.7 | Transcript assembler
 [Scallop](https://github.com/Kingsford-Group/scallop) | v0.10.5 | Transcript assembler
 [CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2) | v.2.1.7 | Transcript assembler
+[zUMIs](https://github.com/sdparekh/zUMIs) | v.2.9.4 | Process RNA-seq data with barcodes 
 [gffcompare](http://ccb.jhu.edu/software/stringtie/gff.shtml) | v0.9.9c | Evaluate assembled transcripts
 [gtfcuff](https://github.com/Kingsford-Group/rnaseqtools) |  | RNA-seq tool
 
