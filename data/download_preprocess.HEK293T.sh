@@ -14,5 +14,6 @@ fi
 # step 2: preprocess
 if [ "A" == "A" ];then
         cd $dir
-	/path/to/zUMIs/zUMIs.sh -c -y HEK293T.yaml
+	sed -i "s! curDir! $dir! g" HEK293T.yaml
+	$dir/../programs/zUMIs/zUMIs.sh -c -y HEK293T.yaml
 fi

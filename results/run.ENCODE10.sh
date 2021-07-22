@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir=`pwd`
-data=$dir/../data/encode10
+data=$dir/../data/ENCODE10
 ref=$dir/../data/human/Homo_sapiens.GRCh38.104.gtf
 scallop2=$dir/../programs/scallop2
 stringtie2=$dir/../programs/stringtie2
@@ -17,7 +17,7 @@ result=$dir/ENCODE10_results
 if [ "A" == "A" ];then
         echo "running Scallop2..."
         mkdir -p $result/scallop2
-        cd $results/scallop2
+        cd $result/scallop2
 
 	# generate job list
 	rm -rf scallop2.jobs.list
