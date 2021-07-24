@@ -8,7 +8,7 @@ scallop2=$dir/../programs/scallop2
 stringtie2=$dir/../programs/stringtie2
 scallop=$dir/../programs/scallop
 class2=$dir/../programs/class2/run_class.pl
-gffcomapre=$dir/../programs/gffcompare
+gffcompare=$dir/../programs/gffcompare
 result=$dir/HEK293T_results
 
 #============================================
@@ -44,7 +44,7 @@ if [ "A" == "A" ];then
 
         for((i=1;i<=192;i++));
         do
-		script=$i.scallop2.sh
+		script=$result/scallop2/$i.scallop2.sh
                 echo "{ /usr/bin/time -v $scallop2 -i $index/$i.bam -o $i.scallop2.gtf > $i.scallop2.log ; } 2> $i.scallop2.time" > $script
                 echo "$gffcompare -r $ref -o $i.scallop2 $i.scallop2.gtf" >> $script
 
@@ -68,7 +68,7 @@ if [ "A" == "A" ];then
 
         for((i=1;i<=192;i++));
         do
-		script=$i.stringtie2.sh
+		script=$result/stringtie2/$i.stringtie2.sh
                 echo "{ /usr/bin/time -v $stringtie2 $index/$i.bam -o $i.stringtie2.gtf > $i.stringtie2.log ; } 2> $i.stringtie2.time" > $script
                 echo "$gffcompare -r $ref -o $i.stringtie2 $i.stringtie2.gtf" >> $script
 
@@ -91,7 +91,7 @@ if [ "A" == "A" ];then
 
         for((i=1;i<=192;i++));
         do
-		script=$i.scallop.sh
+		script=$result/scallop/$i.scallop.sh
                 echo "{ /usr/bin/time -v $scallop -i $index/$i.bam -o $i.scallop.gtf > $i.scallop.log ; } 2> $i.scallop.time" > $script
                 echo "$gffcompare -r $ref -o $i.scallop $i.scallop.gtf" >> $script
 
@@ -115,7 +115,7 @@ if [ "A" == "A" ];then
 
         for((i=1;i<=192;i++));
         do
-                script=$i.class2.sh
+                script=$result/class2/$i.class2.sh
                 echo "{ /usr/bin/time -v perl $class2 -a $index/$i.bam -o $i.class2.gtf > $i.class2.log ; } 2> $i.class2.time" > $script
                 echo "$gffcompare -r $ref -o $i.class2 $i.class2.gtf" >> $script
 
@@ -123,5 +123,5 @@ if [ "A" == "A" ];then
                 echo $script >> class2.jobs.list
         done
 
-        cat class.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+        cat class2.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
 fi
