@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir=`pwd`
-result=$dir/../data/HEK293T_results
+result=$dir/../results/HEK293T_results
 data=$dir/HEK293T
 
 #=============================
@@ -13,18 +13,14 @@ if [ "A" == "A" ];then
         for t in scallop2 stringtie2 scallop class2;
         do
 		cd $result/$t
-		rm *.results
-                for c in hisat star;
+		for((i=1;i<=192;i++));
                 do
-                        for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;
-                        do
-                                less $i.$c.$t | awk '{print $5}' | sed -n '6p' >> $c.$t.numTranscripts.results
-                                less $i.$c.$t | awk '{print $3}' | sed -n '19p' >> $c.$t.numMatchTranscripts.results
-                                grep "Maximum resident set size" $i.$c.$t.time | awk '{print $6}' >> $c.$t.memory.results
-                                grep "User time" $i.$c.$t.time | awk '{print $4}' >> $c.$t.usrtime.results
-                                grep "System time" $i.$c.$t.time | awk '{print $4}' >> $c.$t.systime.results
+			less $i.$t | awk '{print $5}' | sed -n '6p' >> $t.numTranscripts.results
+                        less $i.$t | awk '{print $3}' | sed -n '19p' >> $t.numMatchTranscripts.results
+                        grep "Maximum resident set size" $i.$t.time | awk '{print $6}' >> $t.memory.results
+                        grep "User time" $i.$t.time | awk '{print $4}' >> $t.usrtime.results
+                        grep "System time" $i.$t.time | awk '{print $4}' >> $t.systime.results
 
-			done
                 done
 		mkdir -p $data/$t
 		mv *.results $data/$t

@@ -82,7 +82,7 @@ def plot(match, pre):
 
     plt.xlabel("Mouse cell", fontsize=24)
     plt.ylabel("Precision (%)", fontsize=24)
-    plt.savefig('./Mouse-Fibroblast/figure/precison.pdf', bbox_inches = 'tight')
+    plt.savefig('./Mouse-Fibroblast/figure/precision.pdf', bbox_inches = 'tight')
 
     return None
 

@@ -1,13 +1,20 @@
 #!/bin/bash
+dir=`pwd`
 
-./collect_ENCODE10.sh
-./collect_HEK293T.sh
-./collect_Mouse-Fibroblast.sh
+echo "collecting ENCODE10..."
+$dir/collect_ENCODE10.sh
+echo "collecting HEK293T..."
+$dir/collect_HEK293T.sh
+echo "collecting Mouse-Fibroblast..."
+$dir/collect_Mouse-Fibroblast.sh
 
-mkdir -p ./ENCODE10/figure
-mkdir -p ./HEK293T/figure
-mkdir -p ./Mouse-Fibroblast/figure
+mkdir -p $dir/ENCODE10/figure
+mkdir -p $dir/HEK293T/figure
+mkdir -p $dir/Mouse-Fibroblast/figure
 
-python plot_ENCODE10.py
-python plot_HEK293T.py
-python plot_Fibroblast.py
+echo "plotting ENCODE10..."
+python $dir/plots_ENCODE10.py
+echo "plotting HEK293T..."
+python $dir/plots_HEK293T.py
+echo "plotting Mouse-Fibroblast..."
+python $dir/plots_Mouse-Fibroblast.py

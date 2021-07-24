@@ -82,7 +82,7 @@ def plot(match, pre):
 
     plt.xlabel("Human cell", fontsize=24)
     plt.ylabel("Precision (%)", fontsize=24)
-    plt.savefig('./HEK293T/figure/precison.pdf', bbox_inches = 'tight')
+    plt.savefig('./HEK293T/figure/precision.pdf', bbox_inches = 'tight')
 
     return None
 

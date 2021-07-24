@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir=`pwd`
-result=$dir/../data/ENCODE10_results
+result=$dir/../results/ENCODE10_results
 data=$dir/ENCODE10
 gtfcuff=$dir/../programs/gtfcuff
 
@@ -14,7 +14,6 @@ if [ "A" == "A" ];then
         for t in scallop2 stringtie2 scallop;
         do
 		cd $result/$t
-		rm *.results
                 for c in hisat star;
                 do
                         for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;
