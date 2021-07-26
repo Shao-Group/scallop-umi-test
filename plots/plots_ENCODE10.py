@@ -5,17 +5,17 @@ def load_data(tool):
 
     dirPath = './ENCODE10/' + tool + '/'
 
-    file1 = dirPath + 'hisat' + tool + '.numTranscripts.results'
-    file2 = dirPath + 'hisat' + tool + '.numMatchTranscripts.results'
-    file3 = dirPath + 'star' + tool + '.numTranscripts.results'
-    file4 = dirPath + 'star' + tool + '.numMatchTranscripts.results'
+    file1 = dirPath + 'hisat.' + tool + '.numTranscripts.results'
+    file2 = dirPath + 'hisat.' + tool + '.numMatchTranscripts.results'
+    file3 = dirPath + 'star.' + tool + '.numTranscripts.results'
+    file4 = dirPath + 'star.' + tool + '.numMatchTranscripts.results'
 
     hisat_total_num = np.loadtxt(file1)
     hisat_match_num = np.loadtxt(file2)
-    hisat_pre = match_num / total_num * 100
+    hisat_pre = hisat_match_num / hisat_total_num * 100
     star_total_num = np.loadtxt(file3)
     star_match_num = np.loadtxt(file4)
-    star_pre = match_num / total_num * 100
+    star_pre = star_match_num / star_total_num * 100
 
     return hisat_match_num, hisat_pre, star_match_num, star_pre
 
@@ -35,35 +35,35 @@ def plot(hmatch, hpre, smatch, spre):
         markers= ['o', '^', '+', 's']
 
         i = ii - 1
-        x1 = hpre[i,0]
-        y1 = hmatch[i,0]
-        x2 = hpre[i,1]
-        y2 = hmatch[i,1]
-        x3 = hpre[i,2]
-        y3 = hmatch[i,2]
-        x4 = spre[i,0]
-        y4 = smatch[i,0]
-        x5 = spre[i,1]
-        y5 = smatch[i,1]
-        x6 = spre[i,2]
-        y6 = smatch[i,2]
-        x7 = hpre[i,3]
-        y7 = hmatch[i,3]
-        x8 = spre[i,3]
-        y8 = smatch[i,3]
+        x1 = hpre[i][0]
+        y1 = hmatch[i][0]
+        x2 = hpre[i][1]
+        y2 = hmatch[i][1]
+        x3 = hpre[i][2]
+        y3 = hmatch[i][2]
+        x4 = spre[i][0]
+        y4 = smatch[i][0]
+        x5 = spre[i][1]
+        y5 = smatch[i][1]
+        x6 = spre[i][2]
+        y6 = smatch[i][2]
+        x7 = hpre[i][3]
+        y7 = hmatch[i][3]
+        x8 = spre[i][3]
+        y8 = smatch[i][3]
 
-        file1 = './ENCODE10/' + samples[i] + '.hisat.roc-cor'
-        file2 = './ENCODE10/' + samples[i] + '.hisat.roc-pre'
-        file3 = './ENCODE10/' + samples[i] + '.star.roc-cor'
-        file4 = './ENCODE10/' + samples[i] + '.star.roc-pre'
+        file1 = './ENCODE10/scallop2/' + samples[i] + '.hisat.roc-cor'
+        file2 = './ENCODE10/scallop2/' + samples[i] + '.hisat.roc-pre'
+        file3 = './ENCODE10/scallop2/' + samples[i] + '.star.roc-cor'
+        file4 = './ENCODE10/scallop2/' + samples[i] + '.star.roc-pre'
 
-        hcor = np.loadtxt(file1)
-        hpre = np.loadtxt(file2)
-        scor = np.loadtxt(file3)
-        spre = np.loadtxt(file4)
+        hscor = np.loadtxt(file1)
+        hspre = np.loadtxt(file2)
+        sscor = np.loadtxt(file3)
+        sspre = np.loadtxt(file4)
 
-        ax.plot(hpre,hcor, c='r')
-        ax.plot(spre,scor,c='b')
+        ax.plot(hspre,hscor, c='r')
+        ax.plot(sspre,sscor,c='b')
 
         ax.scatter(x1, y1, c='w', edgecolors='red', marker=markers[0], label='Scallop2-HISAT2', s=300)
         ax.scatter(x2, y2, c='w', edgecolors='red', marker=markers[1], label='StringTie2-HISAT2', s=300)
@@ -97,33 +97,33 @@ def plot(hmatch, hpre, smatch, spre):
         else:
             xmaxl = int(max(xlist) + 23)
 
-    ylist = [y1, y2, y3, y4, y5, y6, y7, y8]
-    yminl = int((int(min(ylist)/1000))*1000)
-    if(ii==7):
-        ymaxl = int((int(max(ylist)/1000)))*1000+2001
-    else:
-        ymaxl = int((int(max(ylist)/1000)))*1000+1001
+        ylist = [y1, y2, y3, y4, y5, y6, y7, y8]
+        yminl = int((int(min(ylist)/1000))*1000)
+        if(ii==7):
+            ymaxl = int((int(max(ylist)/1000)))*1000+2001
+        else:
+            ymaxl = int((int(max(ylist)/1000)))*1000+1001
 
-    ax.set(ylim=[yminl, ymaxl],xlim=[xminl,xmaxl])
-    ax.legend(loc='upper right', fontsize=12)
+        ax.set(ylim=[yminl, ymaxl],xlim=[xminl,xmaxl])
+        ax.legend(loc='upper right', fontsize=12)
 
-    plt.xticks(np.arange(xminl, xmaxl, 6), fontsize=28, horizontalalignment='center')
-    plt.yticks(np.arange(yminl, ymaxl, 1000), fontsize=28)
+        plt.xticks(np.arange(xminl, xmaxl, 6), fontsize=28, horizontalalignment='center')
+        plt.yticks(np.arange(yminl, ymaxl, 1000), fontsize=28)
 
-    for y in np.arange(yminl, ymaxl+1,1000):
-        plt.hlines(y, xmin=xminl, xmax=xmaxl, colors='black', alpha=0.6, linestyles="--", lw=0.5)
+        for y in np.arange(yminl, ymaxl+1,1000):
+            plt.hlines(y, xmin=xminl, xmax=xmaxl, colors='black', alpha=0.6, linestyles="--", lw=0.5)
 
-    plt.gca().spines["top"].set_alpha(0)
-    plt.gca().spines["bottom"].set_alpha(.3)
-    plt.gca().spines["right"].set_alpha(0)
-    plt.gca().spines["left"].set_alpha(.3)
+        plt.gca().spines["top"].set_alpha(0)
+        plt.gca().spines["bottom"].set_alpha(.3)
+        plt.gca().spines["right"].set_alpha(0)
+        plt.gca().spines["left"].set_alpha(.3)
 
-    plt.xlabel("Precision (%)", fontsize=30)
-    plt.ylabel("# Matching transcripts", fontsize=30)
+        plt.xlabel("Precision (%)", fontsize=30)
+        plt.ylabel("# Matching transcripts", fontsize=30)
 
-    figure_name = './ENCODE10/figure/' + samples[i] + '.pdf'
+        figure_name = './ENCODE10/figure/' + samples[i] + '.pdf'
 
-    plt.savefig(figure_name, bbox_inches='tight')
+        plt.savefig(figure_name, bbox_inches='tight')
 
     return None
 
