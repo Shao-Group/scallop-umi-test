@@ -47,6 +47,7 @@ if [ "A" == "A" ];then
 		script=$result/scallop2/$i.scallop2.sh
                 echo "{ /usr/bin/time -v $scallop2 -i $index/$i.bam -o $i.scallop2.gtf > $i.scallop2.log ; } 2> $i.scallop2.time" > $script
                 echo "$gffcompare -r $ref -o $i.scallop2 $i.scallop2.gtf" >> $script
+		echo "$gffcompare -r $ref -M -N -o $i.scallop2.me $i.scallop2.gtf" >> $script
 
 		chmod +x $script
 		echo $script >> scallop2.jobs.list
@@ -71,6 +72,7 @@ if [ "A" == "A" ];then
 		script=$result/stringtie2/$i.stringtie2.sh
                 echo "{ /usr/bin/time -v $stringtie2 $index/$i.bam -o $i.stringtie2.gtf > $i.stringtie2.log ; } 2> $i.stringtie2.time" > $script
                 echo "$gffcompare -r $ref -o $i.stringtie2 $i.stringtie2.gtf" >> $script
+		echo "$gffcompare -r $ref -M -N -o $i.stringtie2.me $i.stringtie2.gtf" >> $script
 
 		chmod +x $script
 		echo $script >> stringtie2.jobs.list
@@ -94,6 +96,7 @@ if [ "A" == "A" ];then
 		script=$result/scallop/$i.scallop.sh
                 echo "{ /usr/bin/time -v $scallop -i $index/$i.bam -o $i.scallop.gtf > $i.scallop.log ; } 2> $i.scallop.time" > $script
                 echo "$gffcompare -r $ref -o $i.scallop $i.scallop.gtf" >> $script
+		echo "$gffcompare -r $ref -M -N -o $i.scallop.me $i.scallop.gtf" >> $script
 
 		chmod +x $script
 		echo $script >> scallop.jobs.list
@@ -118,6 +121,7 @@ if [ "A" == "A" ];then
                 script=$result/class2/$i.class2.sh
                 echo "{ /usr/bin/time -v perl $class2 -a $index/$i.bam -o $i.class2.gtf > $i.class2.log ; } 2> $i.class2.time" > $script
                 echo "$gffcompare -r $ref -o $i.class2 $i.class2.gtf" >> $script
+		echo "$gffcompare -r $ref -M -N -o $i.class2.me $i.class2.gtf" >> $script
 
                 chmod +x $script
                 echo $script >> class2.jobs.list

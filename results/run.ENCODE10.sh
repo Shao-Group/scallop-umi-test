@@ -30,6 +30,8 @@ if [ "A" == "A" ];then
 		echo "{ /usr/bin/time -v $scallop2 -i $data/$i/star.sort.bam -o $i.star.scallop2.gtf > $i.star.scallop2.log ; } 2> $i.star.scallop2.time" >> $script
                 echo "$gffcompare -r $ref -o $i.hisat.scallop2 $i.hisat.scallop2.gtf" >> $script
 		echo "$gffcompare -r $ref -o $i.star.scallop2 $i.star.scallop2.gtf" >> $script
+		echo "$gffcompare -r $ref -M -N -o $i.hisat.scallop2.me $i.hisat.scallop2.gtf" >> $script
+		echo "$gffcompare -r $ref -M -N -o $i.star.scallop2.me $i.star.scallop2.gtf" >> $script
 
 		chmod +x $script
 		echo $script >> scallop2.jobs.list
@@ -57,6 +59,8 @@ if [ "A" == "A" ];then
 		echo "{ /usr/bin/time -v $stringtie2 $data/$i/star.sort.bam -o $i.star.stringtie2.gtf > $i.star.stringtie2.log ; } 2> $i.star.stringtie2.time" >> $script
                 echo "$gffcompare -r $ref -o $i.hisat.stringtie2 $i.hisat.stringtie2.gtf" >> $script
 		echo "$gffcompare -r $ref -o $i.star.stringtie2 $i.star.stringtie2.gtf" >> $script
+		echo "$gffcompare -r $ref -M -N -o $i.hisat.stringtie2.me $i.hisat.stringtie2.gtf" >> $script
+                echo "$gffcompare -r $ref -M -N -o $i.star.stringtie2.me $i.star.stringtie2.gtf" >> $script
 
 		chmod +x $script
 		echo $script >> stringtie2.jobs.list
@@ -83,6 +87,8 @@ if [ "A" == "A" ];then
 		echo "{ /usr/bin/time -v $scallop -i $data/$i/star.sort.bam -o $i.star.scallop.gtf > $i.star.scallop.log ; } 2> $i.star.scallop.time" >> $script
                 echo "$gffcompare -r $ref -o $i.hisat.scallop $i.hisat.scallop.gtf" >> $script
 		echo "$gffcompare -r $ref -o $i.star.scallop $i.star.scallop.gtf" >> $script
+		echo "$gffcompare -r $ref -M -N -o $i.hisat.scallop.me $i.hisat.scallop.gtf" >> $script
+                echo "$gffcompare -r $ref -M -N -o $i.star.scallop.me $i.star.scallop.gtf" >> $script
 
 		chmod +x $script
 		echo $script >> scallop.jobs.list
@@ -111,8 +117,10 @@ if [ "A" == "A" ];then
 		echo "cd $result/class2/$i" > $script
                 echo "{ /usr/bin/time -v perl $class2 -a $data/$i/hisat.sort.bam -o $result/class2/$i/$i.hisat.class2.gtf > $result/class2/$i/$i.hisat.class2.log ; } 2> $result/class2/$i/$i.hisat.class2.time" >> $script
                 echo "$gffcompare -r $ref -o $result/class2/$i/$i.hisat.class2 $result/class2/$i/$i.hisat.class2.gtf" >> $script
+		echo "$gffcompare -r $ref -M -N -o $result/class2/$i/$i.hisat.class2.me $result/class2/$i/$i.hisat.class2.gtf" >> $script
 		echo "{ /usr/bin/time -v perl $class2 -a $data/$i/star.sort.bam -o $result/class2/$i/$i.star.class2.gtf > $result/class2/$i/$i.star.class2.log ; } 2> $result/class2/$i/$i.star.class2.time" >> $script
                 echo "$gffcompare -r $ref -o $result/class2/$i/$i.star.class2 $result/class2/$i/$i.star.class2.gtf" >> $script
+		echo "$gffcompare -r $ref -M -N -o $result/class2/$i/$i.star.class2.me $result/class2/$i/$i.star.class2.gtf" >> $script
 
                 chmod +x $script
                 echo $script >> $result/class2/class2.jobs.list
