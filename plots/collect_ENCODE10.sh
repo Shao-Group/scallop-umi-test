@@ -20,7 +20,9 @@ if [ "A" == "A" ];then
                         do
                                 less $i.$c.$t | awk '{print $5}' | sed -n '6p' >> $c.$t.numTranscripts.results
                                 less $i.$c.$t | awk '{print $3}' | sed -n '19p' >> $c.$t.numMatchTranscripts.results
-                                grep "Maximum resident set size" $i.$c.$t.time | awk '{print $6}' >> $c.$t.memory.results
+				less $i.$c.$t.me | awk '{print $9}' | sed -n '6p'| sed 's/(//' >> $c.$t.numMultiTranscripts.results
+                        	less $i.$c.$t.me | awk '{print $4}' | sed -n '18p' >> $c.$t.numMatchIntronChain.results
+				grep "Maximum resident set size" $i.$c.$t.time | awk '{print $6}' >> $c.$t.memory.results
                                 grep "User time" $i.$c.$t.time | awk '{print $4}' >> $c.$t.usrtime.results
                                 grep "System time" $i.$c.$t.time | awk '{print $4}' >> $c.$t.systime.results
 
@@ -44,6 +46,8 @@ if [ "A" == "A" ];then
                         do
                                 less $result/$i/$i.$c.$t | awk '{print $5}' | sed -n '6p' >> $c.$t.numTranscripts.results
                                 less $result/$i/$i.$c.$t | awk '{print $3}' | sed -n '19p' >> $c.$t.numMatchTranscripts.results
+				less $result/$i/$i.$c.$t.me | awk '{print $9}' | sed -n '6p'| sed 's/(//' >> $c.$t.numMultiTranscripts.results
+                                less $result/$i/$i.$c.$t.me | awk '{print $4}' | sed -n '18p' >> $c.$t.numMatchIntronChain.results
                                 grep "Maximum resident set size" $result/$i/$i.$c.$t.time | awk '{print $6}' >> $c.$t.memory.results
                                 grep "User time" $result/$i/$i.$c.$t.time | awk '{print $4}' >> $c.$t.usrtime.results
                                 grep "System time" $result/$i/$i.$c.$t.time | awk '{print $4}' >> $c.$t.systime.results
@@ -59,11 +63,18 @@ if [ "A" == "A" ];then
 	do
         	for t in hisat star;
         	do
-			$gtfcuff roc $result/scallop2/$i.$t.scallop2.$i.$t.scallop2.gtf.tmap 235227 cov > $data/scallop2/$i.$t.roc
-                	cd $data/scallop2
+			for c in scallop2 stringtie2 scallop class2;
+			do
+				$gtfcuff roc $result/$c/$i.$t.$c.$i.$t.$c.gtf.tmap 235227 cov > $data/$c/$i.$t.roc
+                                $gtfcuff roc $result/$c/$i.$t.$c.me.$i.$t.$c.gtf.tmap 210237 cov > $data/$c/$i.$t.me.roc
 
-			less $i.$t.roc | awk '{print $10}' > $i.$t.roc-cor
-                	less $i.$t.roc | awk '{print $16}' > $i.$t.roc-pre
+				cd $data/$c
+
+				less $i.$t.roc | awk '{print $10}' > $i.$t.roc-cor
+                		less $i.$t.roc | awk '{print $16}' > $i.$t.roc-pre
+				less $i.$t.me.roc | awk '{print $10}' > $i.$t.me.roc-cor
+                                less $i.$t.me.roc | awk '{print $16}' > $i.$t.me.roc-pre
+			done
 		done
 	done
 fi
