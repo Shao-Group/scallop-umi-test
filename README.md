@@ -68,11 +68,12 @@ Our experiments involve the following four programs:
 
 Program | Version | Description
 ------------ | ------------ | ------------ 
-[Scallop2](https://github.com/Shao-Group/Scallop2) | v1.1.1 | Transcript assembler
+[Scallop2](https://github.com/Shao-Group/Scallop2) | v1.1.2 | Transcript assembler
 [StringTie2](https://ccb.jhu.edu/software/stringtie/) | v2.1.7 | Transcript assembler
 [Scallop](https://github.com/Kingsford-Group/scallop) | v0.10.5 | Transcript assembler
-[CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2) | v.2.1.7 | Transcript assembler
-[zUMIs](https://github.com/sdparekh/zUMIs) | v.2.9.4 | Process RNA-seq data with barcodes 
+[CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2) | v2.1.7 | Transcript assembler
+[zUMIs](https://github.com/sdparekh/zUMIs) | v2.9.4 | Process RNA-seq data with barcodes 
+[STAR](https://github.com/alexdobin/STAR) | v2.7.3a | RNA-seq aligner
 [gffcompare](http://ccb.jhu.edu/software/stringtie/gff.shtml) | v0.9.9c | Evaluate assembled transcripts
 [gtfcuff](https://github.com/Kingsford-Group/rnaseqtools) |  | RNA-seq tool
 
