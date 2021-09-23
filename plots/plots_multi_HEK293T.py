@@ -6,8 +6,8 @@ def load_data(tool):
 
     dirPath = './HEK293T/' + tool + '/'
 
-    file1 = dirPath + tool + '.numTranscripts.results'
-    file2 = dirPath + tool + '.numMatchTranscripts.results'
+    file1 = dirPath + tool + '.numMultiTranscripts.results'
+    file2 = dirPath + tool + '.numMatchIntronChain.results'
 
     total_num = np.loadtxt(file1)
     match_num = np.loadtxt(file2)
@@ -54,7 +54,7 @@ def plot_cells(match, pre):
     plt.gca().spines["left"].set_alpha(.3)
     plt.xlabel("Human cell", fontsize=24)
     plt.ylabel("# Matching transcripts", fontsize=24)
-    plt.savefig('./HEK293T/figure/cells_transcripts_num.pdf', bbox_inches = 'tight')
+    plt.savefig('./HEK293T/figure/cells_transcripts_num_multiExon.pdf', bbox_inches = 'tight')
 
     # plot precision and cell id
     y1 = pre[:, 0]
@@ -83,7 +83,7 @@ def plot_cells(match, pre):
 
     plt.xlabel("Human cell", fontsize=24)
     plt.ylabel("Precision (%)", fontsize=24)
-    plt.savefig('./HEK293T/figure/cells_precision.pdf', bbox_inches = 'tight')
+    plt.savefig('./HEK293T/figure/cells_precision_multiExon.pdf', bbox_inches = 'tight')
 
     return None
 
@@ -130,7 +130,7 @@ def plot_bar(scallop2_match, stringtie2_match, scallop_match, class2_match, scal
     
     plt.ylabel("# Matching Transcripts", fontsize=32)
     
-    figure_name = './HEK293T/figure/Smart-seq3_transcripts_num.pdf'
+    figure_name = './HEK293T/figure/Smart-seq3_transcripts_num_multiExon.pdf'
     plt.savefig(figure_name, bbox_inches='tight')
     
     fig, ax = plt.subplots(1, 1, figsize=(6,10), dpi= 600)
@@ -168,7 +168,7 @@ def plot_bar(scallop2_match, stringtie2_match, scallop_match, class2_match, scal
     plt.gca().spines["left"].set_alpha(1)
     
     plt.ylabel("Precision (%)", fontsize=32)
-    figure_name = './HEK293T/figure/Smart-seq3_transcripts_pre.pdf'
+    figure_name = './HEK293T/figure/Smart-seq3_transcripts_pre_multiExon.pdf'
     
     plt.savefig(figure_name, bbox_inches='tight')
     
@@ -200,8 +200,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
     ad_sc = [0]*192
     
     for i in hi:
-        file1 = './HEK293T/stringtie2/' + str(i) + '.stringtie2.roc-cor'
-        file2 = './HEK293T/stringtie2/' + str(i) + '.stringtie2.roc-pre'
+        file1 = './HEK293T/stringtie2/' + str(i) + '.stringtie2.me.roc-cor'
+        file2 = './HEK293T/stringtie2/' + str(i) + '.stringtie2.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_umi = scallop2_match[i-1]
@@ -212,8 +212,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
                 break
             
     for i in hni:
-        file1 = './HEK293T/scallop2/' + str(i) + '.scallop2.roc-cor'
-        file2 = './HEK293T/scallop2/' + str(i) + '.scallop2.roc-pre'
+        file1 = './HEK293T/scallop2/' + str(i) + '.scallop2.me.roc-cor'
+        file2 = './HEK293T/scallop2/' + str(i) + '.scallop2.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_stringtie = stringtie2_match[i-1]
@@ -235,8 +235,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
     ad_sc = [0]*369
     
     for i in hi:
-        file1 = './Mouse-Fibroblast/stringtie2/' + str(i) + '.stringtie2.roc-cor'
-        file2 = './Mouse-Fibroblast/stringtie2/' + str(i) + '.stringtie2.roc-pre'
+        file1 = './Mouse-Fibroblast/stringtie2/' + str(i) + '.stringtie2.me.roc-cor'
+        file2 = './Mouse-Fibroblast/stringtie2/' + str(i) + '.stringtie2.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_umi = mscallop2_match[i-1]
@@ -247,8 +247,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
                 break
             
     for i in hni:
-        file1 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.roc-cor'
-        file2 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.roc-pre'
+        file1 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.me.roc-cor'
+        file2 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_stringtie = mstringtie2_match[i-1]
@@ -285,8 +285,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
     ad_sc = [0]*192
     
     for i in hi:
-        file1 = './HEK293T/scallop/' + str(i) + '.scallop.roc-cor'
-        file2 = './HEK293T/scallop/' + str(i) + '.scallop.roc-pre'
+        file1 = './HEK293T/scallop/' + str(i) + '.scallop.me.roc-cor'
+        file2 = './HEK293T/scallop/' + str(i) + '.scallop.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_umi = scallop2_match[i-1]
@@ -297,8 +297,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
                 break
             
     for i in hni:
-        file1 = './HEK293T/scallop2/' + str(i) + '.scallop2.roc-cor'
-        file2 = './HEK293T/scallop2/' + str(i) + '.scallop2.roc-pre'
+        file1 = './HEK293T/scallop2/' + str(i) + '.scallop2.me.roc-cor'
+        file2 = './HEK293T/scallop2/' + str(i) + '.scallop2.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_stringtie = scallop_match[i-1]
@@ -320,8 +320,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
     ad_sc = [0]*369
     
     for i in mi:
-        file1 = './Mouse-Fibroblast/scallop/' + str(i) + '.scallop.roc-cor'
-        file2 = './Mouse-Fibroblast/scallop/' + str(i) + '.scallop.roc-pre'
+        file1 = './Mouse-Fibroblast/scallop/' + str(i) + '.scallop.me.roc-cor'
+        file2 = './Mouse-Fibroblast/scallop/' + str(i) + '.scallop.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_umi = mscallop2_match[i-1]
@@ -332,8 +332,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
                 break
             
     for i in mni:
-        file1 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.roc-cor'
-        file2 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.roc-pre'
+        file1 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.me.roc-cor'
+        file2 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_stringtie = mscallop_match[i-1]
@@ -370,8 +370,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
     ad_sc = [0]*192
     
     for i in hi:
-        file1 = './HEK293T/class2/' + str(i) + '.class2.roc-cor'
-        file2 = './HEK293T/class2/' + str(i) + '.class2.roc-pre'
+        file1 = './HEK293T/class2/' + str(i) + '.class2.me.roc-cor'
+        file2 = './HEK293T/class2/' + str(i) + '.class2.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_umi = scallop2_match[i-1]
@@ -382,8 +382,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
                 break
             
     for i in hni:
-        file1 = './HEK293T/scallop2/' + str(i) + '.scallop2.roc-cor'
-        file2 = './HEK293T/scallop2/' + str(i) + '.scallop2.roc-pre'
+        file1 = './HEK293T/scallop2/' + str(i) + '.scallop2.me.roc-cor'
+        file2 = './HEK293T/scallop2/' + str(i) + '.scallop2.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_stringtie = class2_match[i-1]
@@ -404,8 +404,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
     ad_sc = [0]*369
     
     for i in mi:
-        file1 = './Mouse-Fibroblast/class2/' + str(i) + '.class2.roc-cor'
-        file2 = './Mouse-Fibroblast/class2/' + str(i) + '.class2.roc-pre'
+        file1 = './Mouse-Fibroblast/class2/' + str(i) + '.class2.me.roc-cor'
+        file2 = './Mouse-Fibroblast/class2/' + str(i) + '.class2.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_umi = mscallop2_match[i-1]
@@ -416,8 +416,8 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
                 break
             
     for i in mni:
-        file1 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.roc-cor'
-        file2 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.roc-pre'
+        file1 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.me.roc-cor'
+        file2 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.me.roc-pre'
         cor = np.loadtxt(file1)
         pre = np.loadtxt(file2)
         cur_stringtie = mclass2_match[i-1]
@@ -518,9 +518,9 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
             
         plt.ylabel("Adjusted precision (%)", fontsize=30)
         if(i<3):
-            filename = "./HEK293T/adjusted_cell_pre" + flist[i] + ".pdf"
+            filename = "./HEK293T/adjusted_cell_pre" + flist[i] + "_multiExon.pdf"
         else:
-            filename = "./Mouse-Fibroblast/adjusted_cell_pre" + flist[i] + ".pdf"
+            filename = "./Mouse-Fibroblast/adjusted_cell_pre" + flist[i] + "_multiExon.pdf"
         plt.savefig(filename, bbox_inches = 'tight')
         
     fig, ax = plt.subplots(1, 1, figsize=(6,10), dpi= 600)
@@ -554,7 +554,7 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
     
     plt.ylabel("Adjusted precisoin (%)", fontsize=32)
     
-    figure_name = './HEK293T/adjusted_pre.pdf'
+    figure_name = './HEK293T/adjusted_pre_multiExon.pdf'
     plt.savefig(figure_name, bbox_inches='tight')
     
     fig, ax = plt.subplots(1, 1, figsize=(6,10), dpi= 600)
@@ -585,7 +585,7 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
     
     plt.ylabel("Adjusted precisoin (%)", fontsize=32)
     
-    figure_name = './Mouse-Fibroblast/adjusted_pre.pdf'
+    figure_name = './Mouse-Fibroblast/adjusted_pre_multiExon.pdf'
     plt.savefig(figure_name, bbox_inches='tight')
 
     return None
@@ -611,7 +611,7 @@ def plot_scatter(scallop2_match, stringtie2_match, scallop_match, class2_match, 
     plt.xlabel("Precision (%)", fontsize=30)
     plt.ylabel("# Matching transcripts", fontsize=30)
     
-    plt.savefig('./HEK293T/figure/scatter.pdf', bbox_inches = 'tight')
+    plt.savefig('./HEK293T/figure/scatter_multiExon.pdf', bbox_inches = 'tight')
     return None
 
 def main():
