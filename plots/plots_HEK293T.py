@@ -93,10 +93,13 @@ def main():
     scallop_match, scallop_pre = load_data('scallop')
     class2_match, class2_pre = load_data('class2')
 
-    match = sort(scallop2_match, stringtie2_match, scallop_match, class2_match)
-    pre = sort(scallop2_pre, stringtie2_pre, scallop_pre, class2_pre)
+    sort_match = sort(scallop2_match, stringtie2_match, scallop_match, class2_match)
+    sort_pre = sort(scallop2_pre, stringtie2_pre, scallop_pre, class2_pre)
 
-    plot(match, pre)
+    plot_cells(sort_match, sort_pre)
+    plot_bar_num(scallop2_match, stringtie2_match, scallop_match, class2_match)
+    plot_bar_pre(scallop2_pre, stringtie2_pre, scallop_pre, class2_pre)
+    plot_scatter(scallop2_match, stringtie2_match, scallop_match, class2_match, scallop2_pre, stringtie2_pre, scallop_pre, class2_pre)
 
 if __name__ == '__main__':
     main()
