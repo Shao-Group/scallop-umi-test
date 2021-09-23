@@ -21,7 +21,7 @@ def sort(scallop2, stringtie2, scallop, class2):
     
     return bundle
 
-def plot(match, pre):
+def plot_cells(match, pre):
 
     # plot the number of match transcripts and cell id
     x = np.arange(1,370,1)
@@ -86,6 +86,30 @@ def plot(match, pre):
 
     return None
 
+def plot_scatter(scallop2_match, stringtie2_match, scallop_match, class2_match, scallop2_pre, stringtie2_pre, scallop_pre, class2_pre):
+    
+    fig, ax = plt.subplots(1, 1, figsize=(12,9), dpi= 600)
+    plt.scatter(scallop2_pre, scallop2_match, label='Scallop2', color='r', s=30)
+    plt.scatter(stringtie2_pre, stringtie2_match, label='StringTie2', color='g', s=30)
+    plt.scatter(scallop_pre, scallop_match, label='Scallop', color='b', s=30)
+    plt.scatter(class2_pre, class2_match, label='CLASS2', color='y', s=30)
+
+    ax.set(ylim=[0, 4801],xlim=[15,72])
+    ax.legend(loc='upper right', fontsize=23)
+    plt.xticks(np.arange(15, 75, 15), fontsize=30, horizontalalignment='center')
+    plt.yticks(np.arange(0, 4501, 1500), fontsize=30)
+    
+    plt.gca().spines["top"].set_alpha(0)
+    plt.gca().spines["bottom"].set_alpha(1)
+    plt.gca().spines["right"].set_alpha(0)
+    plt.gca().spines["left"].set_alpha(1)
+    
+    plt.xlabel("Precision (%)", fontsize=30)
+    plt.ylabel("# Matching transcripts", fontsize=30)
+
+    plt.savefig('./Mouse-Fibroblast/figure/scatter.pdf', bbox_inches = 'tight')
+    return None
+
 def main():
 
     scallop2_match, scallop2_pre = load_data('scallop2')
@@ -93,10 +117,11 @@ def main():
     scallop_match, scallop_pre = load_data('scallop')
     class2_match, class2_pre = load_data('class2')
 
-    match = sort(scallop2_match, stringtie2_match, scallop_match, class2_match)
-    pre = sort(scallop2_pre, stringtie2_pre, scallop_pre, class2_pre)
+    sort_match = sort(scallop2_match, stringtie2_match, scallop_match, class2_match)
+    sort_pre = sort(scallop2_pre, stringtie2_pre, scallop_pre, class2_pre)
 
-    plot(match, pre)
+    plot_cells(sort_match, sort_pre)
+    plot_scatter(scallop2_match, stringtie2_match, scallop_match, class2_match, scallop2_pre, stringtie2_pre, scallop_pre, class2_pre)
 
 if __name__ == '__main__':
     main()
