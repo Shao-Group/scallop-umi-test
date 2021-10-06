@@ -94,7 +94,7 @@ if [ "A" == "A" ];then
         for((i=1;i<=192;i++));
         do
 		script=$result/scallop/$i.scallop.sh
-                echo "{ /usr/bin/time -v $scallop -i $index/$i.bam  --min_num_hits_in_bundle 5 -o $i.scallop.gtf > $i.scallop.log ; } 2> $i.scallop.time" > $script
+                echo "{ /usr/bin/time -v $scallop -i $index/$i.bam --min_num_hits_in_bundle 5 -o $i.scallop.gtf > $i.scallop.log ; } 2> $i.scallop.time" > $script
                 echo "$gffcompare -r $ref -o $i.scallop $i.scallop.gtf" >> $script
 		echo "$gffcompare -r $ref -M -N -o $i.scallop.me $i.scallop.gtf" >> $script
 
