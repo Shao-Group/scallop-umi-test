@@ -55,11 +55,11 @@ available at [doi:10.26208/8c06-w247](https://doi.org/10.26208/8c06-w247) (same 
 ## Annotations
 For **HEK293T** and **ENCODE10** datasets, we use human annotation database as reference;
 for **Mouse-Fibroblast** dataset, we use the mouse annotation database as reference.
-Use the following script in `data` to download annotations and c:
+Use the following script in `data` to download annotations and generate indexes:
 ```
 ./download_index.annotation.sh
 ```
-The downloaded files will appear under `data/human` and 'data/mouse'.
+The downloaded files will appear under `data/human` and `data/mouse`.
 
 
 # Programs
@@ -69,7 +69,7 @@ Our experiments involve the following four programs:
 Program | Version | Description
 ------------ | ------------ | ------------ 
 [Scallop2](https://github.com/Shao-Group/Scallop2) | v1.1.2 | Transcript assembler
-[StringTie2](https://ccb.jhu.edu/software/stringtie/) | v2.1.7 | Transcript assembler
+[StringTie2](https://github.com/gpertea/stringtie) | v2.1.7 | Transcript assembler
 [Scallop](https://github.com/Kingsford-Group/scallop) | v0.10.5 | Transcript assembler
 [CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2) | v2.1.7 | Transcript assembler
 [zUMIs](https://github.com/sdparekh/zUMIs) | v2.9.4 | Process RNA-seq data with barcodes 
@@ -78,8 +78,7 @@ Program | Version | Description
 [gtfcuff](https://github.com/Kingsford-Group/rnaseqtools) |  | RNA-seq tool
 
 You need to download and/or complile them,
-and then link them to `programs` directory.
-Make sure that the program names are in lower cases (i.e., `scallop2`, `stringtie2`, `scallop`, and `gffcompare`)
+and then link them to `programs` directory (i.e., `scallop2`, `stringtie2`, `scallop`, and `gffcompare`)
 in `programs` directory.
 
 

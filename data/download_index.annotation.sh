@@ -27,7 +27,7 @@ fi
 if [ "A" == "A" ];then
 	cd $dir/human
 	mkdir -p human_index
-	/path/to/STAR --runMode genomeGenerate \
+	$dir/../programs/STAR --runMode genomeGenerate \
      		--runThreadN 30 \
      		--genomeDir ./human_index \
      		--genomeFastaFiles $dir/human/Homo_sapiens.GRCh38.dna.primary_assembly.fa \
@@ -36,7 +36,7 @@ if [ "A" == "A" ];then
 
 	cd $dir/mouse
 	mkdir -p mouse_index
-	/path/to/STAR --runMode genomeGenerate \
+	$dir/../programs/STAR --runMode genomeGenerate \
      		--runThreadN 30 \
      		--genomeDir ./mouse_index \
      		--genomeFastaFiles $dir/mouse/Mus_musculus.GRCm39.dna.primary_assembly.fa \
