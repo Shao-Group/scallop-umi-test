@@ -17,11 +17,11 @@ python $dir/plots_ENCODE10.py
 echo "plotting HEK293T..."
 python $dir/plots_HEK293T.py
 echo "plotting Mouse-Fibroblast..."
-python $dir/plots_Mouse-Fibroblast.py
+python $dir/plots_Mouse_Fibroblast.py
 
 echo "plotting multi-exon transcirpts only results on ENCODE10..."
 python $dir/plots_multi_ENCODE10.py
 echo "plotting multi-exon transcirpts only results on HEK293T..."
 python $dir/plots_multi_HEK293T.py
 echo "plotting multi-exon transcirpts only results on Mouse-Fibroblast..."
-python $dir/plots_multi_Mouse-Fibroblast.py
+python $dir/plots_multi_Mouse_Fibroblast.py

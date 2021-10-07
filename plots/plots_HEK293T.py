@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import plots_Mouse-Fibroblast as pm
+import plots_Mouse_Fibroblast as pm
 
 def load_data(tool):
 
