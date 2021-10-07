@@ -216,7 +216,7 @@ def plot_bar_adjusted_pre(hmatch, hpre, smatch, spre):
     hi = []
     hni = []
     for i in range(1,11):
-        if(int(hmatch[i-1][0]) < int(hmatch[i-1][1]):
+        if(int(hmatch[i-1][0]) < int(hmatch[i-1][1])):
             hi.append(i)
         else:
             hni.append(i)
@@ -224,7 +224,7 @@ def plot_bar_adjusted_pre(hmatch, hpre, smatch, spre):
     mi = []
     mni = []
     for i in range(1,11):
-        if(int(smatch[i-1][0]) < int(smatch[i-1][1]):
+        if(int(smatch[i-1][0]) < int(smatch[i-1][1])):
             mi.append(i)
         else:
             mni.append(i)
@@ -296,7 +296,7 @@ def plot_bar_adjusted_pre(hmatch, hpre, smatch, spre):
     hi = []
     hni = []
     for i in range(1,11):
-        if(int(hmatch[i-1][0]) < int(hmatch[i-1][2]):
+        if(int(hmatch[i-1][0]) < int(hmatch[i-1][2])):
             hi.append(i)
         else:
             hni.append(i)
@@ -304,7 +304,7 @@ def plot_bar_adjusted_pre(hmatch, hpre, smatch, spre):
     mi = []
     mni = []
     for i in range(1,11):
-        if(int(smatch[i-1][0]) < int(smatch[i-1][2]):
+        if(int(smatch[i-1][0]) < int(smatch[i-1][2])):
             mi.append(i)
         else:
             mni.append(i)
@@ -376,7 +376,7 @@ def plot_bar_adjusted_pre(hmatch, hpre, smatch, spre):
     hi = []
     hni = []
     for i in range(1,11):
-        if(int(hmatch[i-1][0]) < int(hmatch[i-1][3]):
+        if(int(hmatch[i-1][0]) < int(hmatch[i-1][3])):
             hi.append(i)
         else:
             hni.append(i)
@@ -384,7 +384,7 @@ def plot_bar_adjusted_pre(hmatch, hpre, smatch, spre):
     mi = []
     mni = []
     for i in range(1,11):
-        if(int(smatch[i-1][0]) < int(smatch[i-1][3]):
+        if(int(smatch[i-1][0]) < int(smatch[i-1][3])):
             mi.append(i)
         else:
             mni.append(i)
