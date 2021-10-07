@@ -92,8 +92,7 @@ to run the methods assemblers on the datasets:
 ./run.ENCODE10.sh
 ```
 In each of these three scripts, you can modify it to run different
-methods (Scallop2, StringTie2, Scallop, and CLASS2), and to run
-with different minimum coverage threshold. You can also modify the scripts to specify
+methods (Scallop2, StringTie2, Scallop, and CLASS2). You can also modify the scripts to specify
 how many CPU cores you want to use to run the jobs in parallel.
 
 
