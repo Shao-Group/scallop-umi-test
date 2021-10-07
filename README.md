@@ -1,7 +1,7 @@
 # Overview
 
 This repository tests and compares the performance of transcript assembler
-[**Scallop2**](https://github.com/Kingsford-Group/scallop2) with other three leading transcript assemblers,
+[**Scallop2**](https://github.com/Shao-Group/scallop2) with other three leading transcript assemblers,
 [StringTie2](https://github.com/gpertea/stringtie),
 [Scallop](https://github.com/Kingsford-Group/scallop) and
 [CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2).
