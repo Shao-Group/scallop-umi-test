@@ -64,7 +64,7 @@ The downloaded files will appear under `data/human` and `data/mouse`.
 
 # Programs
 
-Our experiments involve the following four programs:
+Our experiments involve the following programs:
 
 Program | Version | Description
 ------------ | ------------ | ------------ 
