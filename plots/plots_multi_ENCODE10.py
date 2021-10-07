@@ -63,7 +63,7 @@ def plot_sample(hmatch, hpre, smatch, spre):
         sspre = np.loadtxt(file4)
 
         ax.plot(hspre,hscor, c='r', linewidth=3)
-        ax.plot(sspre,sscor,c='b',linewidth=3)
+        ax.plot(sspre,sscor,c='r',linewidth=3)
 
         ax.scatter(x1, y1, c='red', marker=markers[0], label='Scallop2-HISAT2', s=400)
         ax.scatter(x2, y2, c='green', marker=markers[0], label='StringTie2-HISAT2', s=400)
@@ -102,12 +102,12 @@ def plot_sample(hmatch, hpre, smatch, spre):
 	if(ii == 10 or ii == 8 or ii == 5):
 		yminl = int(min(ylist)) - 1
         if(ii==2 or ii==3):
-            ymaxl = int((int(max(ylist))))+2
+            ymaxl = int((int(max(ylist))))+1
         else:
             ymaxl = int((int(max(ylist))))+1
 
         ax.set(ylim=[yminl, ymaxl],xlim=[xminl,xmaxl])
-        ax.legend(loc='upper right', fontsize=16)
+        #ax.legend(loc='upper right', fontsize=16)
 
         plt.xticks(np.arange(xminl, xmaxl, 6), fontsize=28, horizontalalignment='center')
         plt.yticks(np.arange(yminl, ymaxl+1, 1), fontsize=28)
