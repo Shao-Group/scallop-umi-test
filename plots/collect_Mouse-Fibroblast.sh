@@ -3,6 +3,7 @@
 dir=`pwd`
 result=$dir/../results/Mouse-Fibroblast_results
 data=$dir/Mouse-Fibroblast
+gtfcuff=$dir/../programs/gtfcuff
 
 #=============================
 # collect results

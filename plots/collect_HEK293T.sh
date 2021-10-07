@@ -3,6 +3,7 @@
 dir=`pwd`
 result=$dir/../results/HEK293T_results
 data=$dir/HEK293T
+gtfcuff=$dir/../programs/gtfcuff
 
 #=============================
 # collect results
