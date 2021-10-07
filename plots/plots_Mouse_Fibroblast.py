@@ -30,29 +30,27 @@ def plot_cells(match, pre):
     y3 = match[:, 2]
     y4 = match[:, 3]
 
-    mycolors = ['tab:red', 'tab:blue', 'tab:green', 'tab:orange']
+    mycolors = ['r', 'g', 'b', 'y']
     columns = ['Scallop2', 'StringTie2', 'Scallop', 'CLASS2']
 
-    fig, ax = plt.subplots(1, 1, figsize=(9,9), dpi= 300)
-    ax.fill_between(x, y1=y1, y2=0, label=columns[0], alpha=0.8, color=mycolors[0], linewidth=2)
-    ax.fill_between(x, y1=y2, y2=0, label=columns[1], alpha=0.8, color=mycolors[1], linewidth=2)
-    ax.fill_between(x, y1=y4, y2=0, label=columns[3], alpha=0.8, color=mycolors[3], linewidth=2)
-    ax.fill_between(x, y1=y3, y2=0, label=columns[2], alpha=0.8, color=mycolors[2], linewidth=2)
+    fig, ax = plt.subplots(1, 1, figsize=(12,9), dpi= 600)
+    ax.fill_between(x, y1=y1, y2=0, label=columns[0], alpha=0.9, color=mycolors[0], linewidth=2)
+    ax.fill_between(x, y1=y2, y2=0, label=columns[1], alpha=0.9, color=mycolors[1], linewidth=2)
+    ax.fill_between(x, y1=y3, y2=0, label=columns[2], alpha=0.9, color=mycolors[2], linewidth=2)
+    ax.fill_between(x, y1=y4, y2=0, label=columns[3], alpha=0.9, color=mycolors[3], linewidth=2)
     
-    ax.set(ylim=[0, 4201],xlim=[1,370])
+    ax.set(ylim=[0, 4201],xlim=[1,369])
     ax.legend(loc='upper left', fontsize=22)
-    plt.xticks(np.arange(1, 370.0, 60), fontsize=24, horizontalalignment='center')
-    plt.yticks(np.arange(0, 4201.0, 700), fontsize=24)
-
-    for y in np.arange(0, 4201.0, 700):    
-        plt.hlines(y, xmin=0, xmax=len(x), colors='black', alpha=0.6, linestyles="--", lw=0.5)
+    plt.xticks(np.arange(1, 370.0, 80), fontsize=30, horizontalalignment='center')
+    plt.yticks(np.arange(0, 4201.0, 1400), fontsize=30)
+    plt.yticks(rotation = 90)
 
     plt.gca().spines["top"].set_alpha(0)
-    plt.gca().spines["bottom"].set_alpha(.3)
+    plt.gca().spines["bottom"].set_alpha(1)
     plt.gca().spines["right"].set_alpha(0)
-    plt.gca().spines["left"].set_alpha(.3)
-    plt.xlabel("Mouse cell", fontsize=24)
-    plt.ylabel("# Matching transcripts", fontsize=24)
+    plt.gca().spines["left"].set_alpha(1)
+    plt.xlabel("MF Single Cells", fontsize=30)
+    plt.ylabel("# Matching transcripts", fontsize=30)
     plt.savefig('./Mouse-Fibroblast/figure/transcripts_num.pdf', bbox_inches = 'tight')
 
     # plot precision and cell id
@@ -61,27 +59,25 @@ def plot_cells(match, pre):
     y3 = pre[:, 2]
     y4 = pre[:, 3]
 
-    fig, ax = plt.subplots(1, 1, figsize=(9,8.6), dpi= 300)
+    fig, ax = plt.subplots(1, 1, figsize=(12,9), dpi= 300)
     ax.fill_between(x, y1=y1, y2=0, label=columns[0], alpha=0.8, color=mycolors[0], linewidth=2)
     ax.fill_between(x, y1=y3, y2=0, label=columns[2], alpha=0.8, color=mycolors[2], linewidth=2)
     ax.fill_between(x, y1=y4, y2=0, label=columns[3], alpha=0.8, color=mycolors[3], linewidth=2)
     ax.fill_between(x, y1=y2, y2=0, label=columns[1], alpha=0.8, color=mycolors[1], linewidth=2)
 
-    ax.set(ylim=[0, 71],xlim=[1,370])
-    ax.legend(loc='upper left', fontsize=21)
-    plt.xticks(np.arange(1, 370.0, 60), fontsize=24, horizontalalignment='center')
-    plt.yticks(np.arange(0, 71.0, 10), fontsize=24)
+    ax.set(ylim=[0, 70],xlim=[1,369])
+    ax.legend(loc='upper left', fontsize=22)
+    plt.xticks(np.arange(1, 370.0, 80), fontsize=30, horizontalalignment='center')
+    plt.yticks(np.arange(0, 70.0, 20), fontsize=30)
+    plt.yticks(rotation = 90)
            
-    for y in np.arange(0, 71.0, 10):    
-        plt.hlines(y, xmin=0, xmax=len(x), colors='black', alpha=0.6, linestyles="--", lw=0.5)
-
     plt.gca().spines["top"].set_alpha(0)
-    plt.gca().spines["bottom"].set_alpha(.3)
+    plt.gca().spines["bottom"].set_alpha(1)
     plt.gca().spines["right"].set_alpha(0)
-    plt.gca().spines["left"].set_alpha(.3)
+    plt.gca().spines["left"].set_alpha(1)
 
-    plt.xlabel("Mouse cell", fontsize=24)
-    plt.ylabel("Precision (%)", fontsize=24)
+    plt.xlabel("MF Single Cells", fontsize=30)
+    plt.ylabel("Precision (%)", fontsize=30)
     plt.savefig('./Mouse-Fibroblast/figure/precision.pdf', bbox_inches = 'tight')
 
     return None
