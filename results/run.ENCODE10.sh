@@ -156,8 +156,6 @@ if [ "A" == "A" ];then
                                 echo $script >> scallop2.jobs.list
                         done
                 done
-		chmod +x $script
-		echo $script >> scallop2.jobs.list
         done
 	cat scallop2.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
 fi
@@ -184,8 +182,6 @@ if [ "A" == "A" ];then
                                 echo $script >> stringtie2.jobs.list
                         done
                 done
-                chmod +x $script
-                echo $script >> stringtie2.jobs.list
         done
         cat stringtie2.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
 fi
@@ -212,9 +208,77 @@ if [ "A" == "A" ];then
                                 echo $script >> scallop.jobs.list
                         done
                 done
-                chmod +x $script
-                echo $script >> scallop.jobs.list
         done
         cat scallop.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
 fi
 
+#============================================
+# experiments for quant and class
+# p1: minimum gap, using default value
+# p2: minimum coverage, using 0.001
+#=============================================
+# scallop2
+if [ "A" == "A" ];then
+        echo "running Scallop2..."
+        cd $result/scallop2
+	rm -rf scallop2.jobs.list
+        for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;
+        do
+                p1=100
+                p2=0.001
+                prefix=$i-$p1-$p2
+                script=$result/scallop2/$prefix.scallop2.sh
+                echo "cd $result/scallop2" > $script
+                echo "{ /usr/bin/time -v $scallop2 -i $data/$i/hisat.sort.bam --min_bundle_gap $p1 --min_transcript_coverage $p2 -o $prefix.hisat.scallop2.gtf > $prefix.hisat.scallop2.log ; } 2> $prefix.hisat.scallop2.time" >> $script
+                echo "{ /usr/bin/time -v $scallop2 -i $data/$i/star.sort.bam --min_bundle_gap $p1 --min_transcript_coverage $p2 -o $prefix.star.scallop2.gtf > $prefix.star.scallop2.log ; } 2> $prefix.star.scallop2.time" >> $script
+                echo "$gffcompare -r $ref -M -N -o $prefix.hisat.scallop2.me $prefix.hisat.scallop2.gtf" >> $script
+                echo "$gffcompare -r $ref -M -N -o $prefix.star.scallop2.me $prefix.star.scallop2.gtf" >> $script
+                chmod +x $script
+                echo $script >> scallop2.jobs.list
+        done
+	cat scallop2.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+fi
+
+# stringtie2
+if [ "A" == "A" ];then
+        echo "running stringtie2..."
+        cd $result/stringtie2
+        rm -rf stringtie2.jobs.list
+        for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;
+        do
+                p1=50
+                p2=0.001
+                prefix=$i-$p1-$p2
+                script=$result/stringtie2/$prefix.stringtie2.sh
+                echo "cd $result/stringtie2" > $script
+                echo "{ /usr/bin/time -v $stringtie2 -i $data/$i/hisat.sort.bam -g $p1 -c $p2 -o $prefix.hisat.stringtie2.gtf > $prefix.hisat.stringtie2.log ; } 2> $prefix.hisat.stringtie2.time" >> $script
+                echo "{ /usr/bin/time -v $stringtie2 -i $data/$i/star.sort.bam -g $p1 -c $p2 -o $prefix.star.stringtie2.gtf > $prefix.star.stringtie2.log ; } 2> $prefix.star.stringtie2.time" >> $script
+                echo "$gffcompare -r $ref -M -N -o $prefix.hisat.stringtie2.me $prefix.hisat.stringtie2.gtf" >> $script
+                echo "$gffcompare -r $ref -M -N -o $prefix.star.stringtie2.me $prefix.star.stringtie2.gtf" >> $script
+                chmod +x $script
+                echo $script >> stringtie2.jobs.list
+        done
+        cat stringtie2.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+fi
+
+# scallop
+if [ "A" == "A" ];then
+        echo "running scallop..."
+        cd $result/scallop
+	rm -rf scallop.jobs.list
+        for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;
+        do
+                p1=50
+                p2=0.001
+                prefix=$i-$p1-$p2
+                script=$result/scallop/$prefix.scallop.sh
+                echo "cd $result/scallop" > $script
+                echo "{ /usr/bin/time -v $scallop -i $data/$i/hisat.sort.bam --min_bundle_gap $p1 --min_transcript_coverage $p2 -o $prefix.hisat.scallop.gtf > $prefix.hisat.scallop.log ; } 2> $prefix.hisat.scallop.time" >> $script
+                echo "{ /usr/bin/time -v $scallop -i $data/$i/star.sort.bam --min_bundle_gap $p1 --min_transcript_coverage $p2 -o $prefix.star.scallop.gtf > $prefix.star.scallop.log ; } 2> $prefix.star.scallop.time" >> $script
+                echo "$gffcompare -r $ref -M -N -o $prefix.hisat.scallop.me $prefix.hisat.scallop.gtf" >> $script
+                echo "$gffcompare -r $ref -M -N -o $prefix.star.scallop.me $prefix.star.scallop.gtf" >> $script
+                chmod +x $script
+                echo $script >> scallop.jobs.list
+        done
+	cat scallop.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+fi
