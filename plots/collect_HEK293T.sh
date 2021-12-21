@@ -48,3 +48,31 @@ if [ "A" == "A" ];then
         done
 fi
 
+#=======================================
+# collect results for varying parameters
+#=======================================
+if [ "A" == "A" ];then
+        mkdir -p $data
+        for t in scallop2 stringtie2 scallop;
+        do
+                mkdir -p $data/$t
+                for p1 in 20 50 100 200;
+                do
+			for p2 in 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 6 7 8 9 10;
+			do
+                                prefix=$p1-$p2
+                                for((i=1;i<=192;i++));
+                                do
+					cd $result/$t
+                                        less $i-$prefix.$t.me | awk '{print $9}' | sed -n '6p'| sed 's/(//' >> $prefix.$t.numMultiTranscripts.results
+                                        less $i-$prefix.$t.me | awk '{print $4}' | sed -n '18p' >> $prefix.$t.numMatchIntronChain.results
+					$gtfcuff roc $result/$t/$i-$prefix.$t.me.$i-$prefix.$t.gtf.tmap 210237 cov > $data/$t/$i.$prefix.$t.me.roc
+					cd $data/$t
+					less $i.$prefix.$t.me.roc | awk '{print $10}' > $i.$prefix.$t.me.roc-cor
+                                        less $i.$prefix.$t.me.roc | awk '{print $16}' > $i.$prefix.$t.me.roc-pre
+                                done
+                                mv $result/$t/*.results $data/$t
+                        done
+                done
+        done
+fi

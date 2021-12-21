@@ -1,5 +1,4 @@
 #!/bin/bash
-
 dir=`pwd`
 data=$dir/../data/Mouse-Fibroblast/zUMIs_output/demultiplexed
 index=$dir/Mouse-Fibroblast_index
@@ -129,3 +128,84 @@ if [ "A" == "A" ];then
 
         cat class2.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
 fi
+
+#============================================
+# experiments for varying parameters
+# p1: minimum gap
+# p2: minimum coverage
+#=============================================
+# Scallop2
+if [ "A" == "A" ];then
+        echo "running Scallop2..."
+        cd $result/scallop2
+	rm -rf scallop2.jobs.list
+        for((i=1;i<=369;i++));
+        do
+                for p1 in 20 50 100 200;
+                do
+                        for p2 in 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 6 7 8 9 10;
+                        do
+                                prefix=$i-$p1-$p2
+                                script=$result/scallop2/$prefix.scallop2.sh
+                                echo "{ /usr/bin/time -v $scallop2 -i $index/$i.bam --min_bundle_gap $p1 --min_transcript_coverage $p2 -o $prefix.scallop2.gtf > $prefix.scallop2.log ; } 2> $prefix.scallop2.time" > $script
+                                echo "$gffcompare -r $ref -M -N -o $prefix.scallop2.me $prefix.scallop2.gtf" >> $script
+                                chmod +x $script
+                                echo $script >> scallop2.jobs.list
+                        done
+                done
+		chmod +x $script
+		echo $script >> scallop2.jobs.list
+        done
+	cat scallop2.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+fi
+
+# stringtie2
+if [ "A" == "A" ];then
+        echo "running stringtie2..."
+        cd $result/stringtie2
+        rm -rf stringtie2.jobs.list
+        for((i=1;i<=369;i++));
+        do
+                for p1 in 20 50 100 200;
+                do
+                        for p2 in 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 6 7 8 9 10;
+                        do
+                                prefix=$i-$p1-$p2
+                                script=$result/stringtie2/$prefix.stringtie2.sh
+                                echo "{ /usr/bin/time -v $stringtie2 -i $index/$i.bam -g $p1 -c $p2 -o $prefix.stringtie2.gtf > $prefix.stringtie2.log ; } 2> $prefix.stringtie2.time" > $script
+                                echo "$gffcompare -r $ref -M -N -o $prefix.stringtie2.me $prefix.stringtie2.gtf" >> $script
+                                chmod +x $script
+                                echo $script >> stringtie2.jobs.list
+                        done
+                done
+                chmod +x $script
+                echo $script >> stringtie2.jobs.list
+        done
+        cat stringtie2.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+fi
+
+# scallop
+if [ "A" == "A" ];then
+        echo "running scallop..."
+        cd $result/scallop
+        rm -rf scallop.jobs.list
+        for((i=1;i<=369;i++));
+        do
+                for p1 in 20 50 100 200;
+                do
+                        for p2 in 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 6 7 8 9 10;
+                        do
+                                prefix=$i-$p1-$p2
+                                script=$result/scallop/$prefix.scallop.sh
+                                echo "{ /usr/bin/time -v $scallop -i $index/$i.bam --min_bundle_gap $p1 --min_transcript_coverage $p2 -o $prefix.scallop.gtf > $prefix.scallop.log ; } 2> $prefix.scallop.time" > $script
+                                echo "$gffcompare -r $ref -M -N -o $prefix.scallop.me $prefix.scallop.gtf" >> $script
+                                chmod +x $script
+                                echo $script >> scallop.jobs.list
+                        done
+                done
+                chmod +x $script
+                echo $script >> scallop.jobs.list
+        done
+        cat scallop.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+fi
+

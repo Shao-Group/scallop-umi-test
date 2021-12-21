@@ -25,3 +25,8 @@ echo "plotting multi-exon transcirpts only results on HEK293T..."
 python $dir/plots_multi_HEK293T.py
 echo "plotting multi-exon transcirpts only results on Mouse-Fibroblast..."
 python $dir/plots_multi_Mouse_Fibroblast.py
+
+echo "plotting varying parameters results..."
+python $dir/plots_ENCODE10_parameter.py
+python $dir/plots_HEK293T_parameter.py
+python $dir/plots_Mouse-Fibroblast_parameter.py
