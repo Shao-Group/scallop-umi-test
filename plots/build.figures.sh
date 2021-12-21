@@ -30,3 +30,8 @@ echo "plotting varying parameters results..."
 python $dir/plots_ENCODE10_parameter.py
 python $dir/plots_HEK293T_parameter.py
 python $dir/plots_Mouse-Fibroblast_parameter.py
+
+echo "plotting full-length and non-full-length distribution..."
+python $dir/plots_ENCODE10_fragments.py
+python $dir/plots_HEK293T_fragments.py
+python $dir/plots_Mouse-Fibroblast_fragments.py
