@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from PyPDF2 import PdfFileMerger
 import os
 
 p1 = [20, 50, 100, 200] # min_bundle_gap

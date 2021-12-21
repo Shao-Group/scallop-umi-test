@@ -1,3 +1,57 @@
+#=======================================
+# collect codes for full-length
+# and non-full-length transcripts
+#=======================================
+if [ "A" == "A" ];then
+        mkdir -p $data/scallop2/scallop2-full
+        cd $data/scallop2/scallop2-full
+        rm -rf *.codes
+        for((i=1;i<=192;i++));
+        do
+                ln -sf $result/scallop2/$i-scallop2.me.$i-scallop2.gtf.tmap .
+                file=$i-scallop2.me.$i-scallop2.gtf.tmap
+                sed -i '1d' $file
+                less $file | awk '{print $3}' >> $i.codes
+        done
+
+        mkdir -p $data/scallop2/scallop2-non-full
+        cd $data/scallop2/scallop2-non-full
+        rm -rf *.codes
+        for((i=1;i<=192;i++));
+        do
+                ln -sf $result/scallop2/$i-non-full-scallop2.me.$i-non-full-scallop2.gtf.tmap .
+                file=$i-non-full-scallop2.me.$i-non-full-scallop2.gtf.tmap
+                sed -i '1d' $file
+                less $file | awk '{print $3}' >> $i.codes
+        done
+fi
+#=======================================
+# collect codes for full-length
+# and non-full-length transcripts
+#=======================================
+if [ "A" == "A" ];then
+        mkdir -p $data/scallop2/scallop2-full
+        cd $data/scallop2/scallop2-full
+        rm -rf *.codes
+        for((i=1;i<=192;i++));
+        do
+                ln -sf $result/scallop2/$i-scallop2.me.$i-scallop2.gtf.tmap .
+                file=$i-scallop2.me.$i-scallop2.gtf.tmap
+                sed -i '1d' $file
+                less $file | awk '{print $3}' >> $i.codes
+        done
+
+        mkdir -p $data/scallop2/scallop2-non-full
+        cd $data/scallop2/scallop2-non-full
+        rm -rf *.codes
+        for((i=1;i<=192;i++));
+        do
+                ln -sf $result/scallop2/$i-non-full-scallop2.me.$i-non-full-scallop2.gtf.tmap .
+                file=$i-non-full-scallop2.me.$i-non-full-scallop2.gtf.tmap
+                sed -i '1d' $file
+                less $file | awk '{print $3}' >> $i.codes
+        done
+fi
 #!/bin/bash
 dir=`pwd`
 result=$dir/../results/ENCODE10_results
@@ -109,3 +163,38 @@ if [ "A" == "A" ];then
 		mv $result/$t/*.results $data/$t
 	done
 fi
+
+#=======================================
+# collect codes for full-length
+# and non-full-length transcripts
+#=======================================
+if [ "A" == "A" ];then
+        mkdir -p $data/scallop2/scallop2-full
+        cd $data/scallop2/scallop2-full
+        rm -rf *.codes
+        for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;
+	do
+		for a in hisat star;
+        	do
+                	ln -sf $result/scallop2/$i.$a.scallop2.me.$i.$a.scallop2.gtf.tmap .
+                	file=$i.$a.scallop2.me.$i.$a.scallop2.gtf.tmap
+                	sed -i '1d' $file
+                	less $file | awk '{print $3}' >> $i.codes
+		done
+        done
+
+        mkdir -p $data/scallop2/scallop2-non-full
+        cd $data/scallop2/scallop2-non-full
+        rm -rf *.codes
+        for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;
+	do
+		for a in hisat star;
+		do
+                	ln -sf $result/scallop2/$i.$a.non-full.scallop2.me.$i.$a.non-full.scallop2.gtf.tmap .
+                	file=$i.$a.non-full.scallop2.me.$i.$a.non-full.scallop2.gtf.tmap
+                	sed -i '1d' $file
+                	less $file | awk '{print $3}' >> $i.codes
+		done
+        done
+fi
+

@@ -76,3 +76,32 @@ if [ "A" == "A" ];then
                 done
 	done
 fi
+
+#=======================================
+# collect codes for full-length
+# and non-full-length transcripts
+#=======================================
+if [ "A" == "A" ];then
+        mkdir -p $data/scallop2/scallop2-full
+        cd $data/scallop2/scallop2-full
+        rm -rf *.codes
+        for((i=1;i<=369;i++));
+        do
+                ln -sf $result/scallop2/$i-scallop2.me.$i-scallop2.gtf.tmap .
+                file=$i-scallop2.me.$i-scallop2.gtf.tmap
+                sed -i '1d' $file
+                less $file | awk '{print $3}' >> $i.codes
+        done
+
+        mkdir -p $data/scallop2/scallop2-non-full
+        cd $data/scallop2/scallop2-non-full
+        rm -rf *.codes
+        for((i=1;i<=369;i++));
+        do
+                ln -sf $result/scallop2/$i-non-full-scallop2.me.$i-non-full-scallop2.gtf.tmap .
+                file=$i-non-full-scallop2.me.$i-non-full-scallop2.gtf.tmap
+                sed -i '1d' $file
+                less $file | awk '{print $3}' >> $i.codes
+        done
+fi
+
