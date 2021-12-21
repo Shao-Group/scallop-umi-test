@@ -282,3 +282,29 @@ if [ "A" == "A" ];then
         done
 	cat scallop.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
 fi
+
+#============================================
+# full-length and non-full-length
+# transcripts assembled by Scallop2
+#============================================
+# Scallop2
+if [ "A" == "A" ];then
+	cd $result/scallop2
+        rm -rf scallop2.jobs.list
+        for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;
+        do
+                prefix=$i
+                script=$result/scallop2/$prefix.scallop2.sh
+                echo "{ /usr/bin/time -v $scallop2 -i $data/$i/hisat.sort.bam -f $prefix.hisat.non-full.scallop2.gtf -o $prefix.hisat.scallop2.gtf > $prefix.hisat.scallop2.log ; } 2> $prefix.hisat.scallop2.time" >> $script
+                echo "{ /usr/bin/time -v $scallop2 -i $data/$i/star.sort.bam -f $prefix.star.non-full.scallop2.gtf -o $prefix.star.scallop2.gtf > $prefix.star.scallop2.log ; } 2> $prefix.star.scallop2.time" >> $script
+                echo "gffcompare -r $ref -M -N -o $prefix.hisat.scallop2.me $prefix.hisat.scallop2.gtf" >> $script
+                echo "gffcompare -r $ref -M -N -o $prefix.star.scallop2.me $prefix.star.scallop2.gtf" >> $script
+		echo "gffcompare -r $ref -M -N -o $prefix.hisat.non-full.scallop2.me $prefix.hisat.non-full.scallop2.gtf" >> $script
+                echo "gffcompare -r $ref -M -N -o $prefix.star.non-full.scallop2.me $prefix.star.non-full.scallop2.gtf" >> $script
+                chmod +x $script
+                echo $script >> scallop2.jobs.list
+        done
+        cat scallop2.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+fi
+
+

@@ -265,3 +265,23 @@ if [ "A" == "A" ];then
         cat scallop.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
 fi
 
+#============================================
+# full-length and non-full-length
+# transcripts assembled by Scallop2
+#============================================
+# Scallop2
+if [ "A" == "A" ];then
+        cd $result/scallop2
+        rm -rf scallop2.jobs.list
+        for((i=1;i<=369;i++));
+        do
+                script=$result/scallop2/$i.scallop2.sh
+                echo "{ /usr/bin/time -v $scallop2 -i $index/$i.bam -f $i-non-full-scallop2.gtf -o $i-scallop2.gtf > scallop2.log ; } 2> scallop2.time" > $script
+                echo "gffcompare -r $ref -M -N -o $i-non-full-scallop2.me $i-non-full-scallop2.gtf" >> $script
+                echo "gffcompare -r $ref -M -N -o $i-scallop2.me $i-scallop2.gtf" >> $script
+                chmod +x $script
+                echo $script >> scallop2.jobs.list
+        done
+        cat scallop2.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+fi
+
