@@ -75,6 +75,7 @@ Program | Version | Description
 [zUMIs](https://github.com/sdparekh/zUMIs) | v2.9.4 | Process RNA-seq data with barcodes 
 [STAR](https://github.com/alexdobin/STAR) | v2.7.3a | RNA-seq aligner
 [gffcompare](http://ccb.jhu.edu/software/stringtie/gff.shtml) | v0.9.9c | Evaluate assembled transcripts
+[Salmon](https://salmon.readthedocs.io/en/latest/salmon.html) | v1.6.0 | Transcript quantification
 [gtfcuff](https://github.com/Kingsford-Group/rnaseqtools) |  | RNA-seq tool
 
 You need to download and/or complile them,

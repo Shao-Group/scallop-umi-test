@@ -26,6 +26,14 @@ python $dir/plots_multi_HEK293T.py
 echo "plotting multi-exon transcirpts only results on Mouse-Fibroblast..."
 python $dir/plots_multi_Mouse_Fibroblast.py
 
+echo "plotting quant results..."
+python $dir/plots_smartseq3_quant.py
+python $dir/plots_ENCODE10_quant.py
+
+echo "plotting class results..."
+python $dir/plots_smartseq3_class.py
+python $dir/plots_ENCODE10_class.py
+
 echo "plotting varying parameters results..."
 python $dir/plots_ENCODE10_parameter.py
 python $dir/plots_HEK293T_parameter.py

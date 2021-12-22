@@ -1,9 +1,9 @@
 #!/bin/bash
-
 dir=`pwd`
 result=$dir/../results/HEK293T_results
 data=$dir/HEK293T
 gtfcuff=$dir/../programs/gtfcuff
+gffcompare=$dir/../programs/gffcompare
 
 #=============================
 # collect results
@@ -47,6 +47,63 @@ if [ "A" == "A" ];then
                 done
         done
 fi
+
+#=======================================
+# quant and class
+#=======================================
+if [ "A" == "A" ];then
+        qref=$dir/../data/human/quant/HEK293T
+        cref=$dir/../data/human/class
+        cd $result
+        rm -rf qandc.jobs.list
+	for((i=1;i<=192;i++));
+        do
+                for t in scallop2 stringtie2 scallop;
+                do
+                        num=50
+                        if [ $t == "scallop2" ]; then
+                                num=100
+                        fi
+                        script=$result/$t/$i.sh
+                        echo "#!/bin/bash" > $script
+                        for n in low middle high;
+                        do
+                                echo "$gffcompare -r $qref/$i/$n.gtf -M -N -o $result/$t/$i.$n $result/$t/$i-$num-0.001.$t.gtf" >> $script
+                        done
+                        for n in 2-3 4-6 7;
+                        do
+                                echo "$gffcompare -r $cref/$n.gtf -M -N -o $result/$t/$i.$n $result/$t/$i-$num-0.001.$t.gtf" >> $script
+                        done
+                        chmod +x $script
+                        echo $script >> qandc.jobs.list
+                done
+        done
+        cat qandc.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+fi
+
+if [ "A" == "A" ];then
+        for t in scallop2 stringtie2 scallop;
+        do
+                for((i=1;i<=192;i++));
+                do
+                        cd $result/$t
+                        num=50
+                        if [ $t == "scallop2" ]; then
+                                num=100
+                        fi
+                        for n in 2-3 4-6 7 low middle high;
+                        do
+                                less $i.$n | awk '{print $9}' | sed -n '6p'| sed 's/(//' >> $data/$t/$n.numMultiTranscripts.results
+                                less $i.$n | awk '{print $4}' | sed -n '18p' >> $data/$t/$n.numMatchIntronChain.results
+                                total=`less $i.$n | awk '{print $9}' | sed -n '8p' | sed 's/(//' `
+                                $gtfcuff roc $result/$t/$i.$n.$i-$num-0.001.$t.gtf.tmap $total cov > $data/$t/$i.$n.roc
+                                less $data/$t/$i.$n.roc | awk '{print $10}' > $data/$t/$i.$n.roc-cor
+                                less $data/$t/$i.$n.roc | awk '{print $16}' > $data/$t/$i.$n.roc-pre
+                        done
+                done
+        done
+fi
+
 
 #=======================================
 # collect results for varying parameters
