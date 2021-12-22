@@ -70,11 +70,12 @@ if [ "A" == "A" ];then
                         do
                                 echo "$gffcompare -r $qref/$i/$n.gtf -M -N -o $result/$t/$i.$n $result/$t/$i-$num-0.001.$t.gtf" >> $script
                         done
+                        echo "$gtfcuff split-class $i-$num-0.001.$t.me.$i-$num-0.001.$t.gtf.tmap $i-$num-0.001.$t.gtf $i" >> $script
                         for n in 2-3 4-6 7;
                         do
-                                echo "$gffcompare -r $cref/$n.gtf -M -N -o $result/$t/$i.$n $result/$t/$i-$num-0.001.$t.gtf" >> $script
-                        done
-                        chmod +x $script
+                                echo "$gffcompare -r $cref/$n.gtf -M -N -o $result/$t/$i.$n $result/$t/$i.$n.split.gtf" >> $script
+			done
+			chmod +x $script
                         echo $script >> qandc.jobs.list
                 done
         done
