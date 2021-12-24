@@ -4,6 +4,7 @@ result=$dir/../results/ENCODE10_results
 data=$dir/ENCODE10
 gtfcuff=$dir/../programs/gtfcuff
 gffcompare=$dir/../programs/gffcompare
+salmon=$dir/../programs/salmon
 
 #=============================
 # collect results
@@ -84,7 +85,59 @@ fi
 #=======================================
 if [ "A" == "A" ];then
 	qref=$dir/../data/human/quant/ENCODE10
-	cref=$dir/../data/human/class
+        cref=$dir/../data/human/class
+	mkdir -p $qref
+	mkdir -p $cref
+
+	# generate subsets for quant
+	quant=$qref/salmon_quant
+	index=$dir/../data/human/salmon.index
+	fq=$dir/../data/ENCODE10/fq
+	mkdir -p $quant
+	cd $quant
+	rm -rf salmon.jobs.list
+
+	for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;
+        do
+                script=$quant/$i.sh
+                echo "$salmon quant -i $index -l ISR -1 $fq/$i/$i.Rd1.fq -2 $fq/$i/$i.Rd2.fq -o $quant/$i.quant -p 4" > $i.sh
+                chmod +x $script
+                echo $script >> salmon.jobs.list
+        done
+        cat salmon.jobs.list | xargs -L 1 -I CMD -P 10 bash -c CMD 1> /dev/null 2> /dev/null
+
+	for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;
+        do
+                cd $quant/$i.quant
+                awk '{print $2,$3,$4,$5}' quant.sf > quant.sf.col25
+                awk '{print $1}' quant.sf > quant.sf.col1
+                sed -i -r 's/(.{15}).*/\1/' quant.sf.col1
+                paste quant.sf.col1 quant.sf.col25 > quant.sf.mod
+        done
+
+	tmap=$result/scallop2/SRR307903-100-0.001.hisat.scallop2.me.SRR307903-100-0.001.hisat.scallop2.gtf.tmap
+	cd $qref
+	rm -rf subref.jobs.list
+	for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;
+        do
+		script=$qref/$i.sh
+                echo "mkdir -p $i" > $script
+                echo "cd $i" >> $script
+                echo "$gtfcuff split-quant $tmap $quant/$i.quant/quant.sf.mod 0.1 $dir/../data/human/Homo_sapiens.GRCh38.104.gtf" >> $script
+                chmod +x $script
+                echo $script >> subref.jobs.list
+        done
+        cat subref.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+
+	# generate subsets for class
+	cd $cref
+	$gtfcuff split-class $result/scallop2/SRR307903-100-0.001.hisat.scallop2.me.SRR307903-100-0.001.hisat.scallop2.gtf.tmap ../Homo_sapiens.GRCh38.104.gtf human
+	for n in 2-3 4-6 7;
+	do
+		mv human.$n.gtf $n.gtf
+	done	
+
+	# collect results for quant and class
 	cd $result
 	rm -rf qandc.jobs.list
 	for i in SRR307903 SRR315323 SRR387661 SRR534307 SRR545695 SRR307911 SRR315334 SRR534291 SRR534319 SRR545723;

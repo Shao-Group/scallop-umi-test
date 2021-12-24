@@ -4,6 +4,8 @@ result=$dir/../results/HEK293T_results
 data=$dir/HEK293T
 gtfcuff=$dir/../programs/gtfcuff
 gffcompare=$dir/../programs/gffcompare
+salmon=$dir/../programs/salmon
+bedtools=$dir/../programs/bedtools
 
 #=============================
 # collect results
@@ -54,6 +56,59 @@ fi
 if [ "A" == "A" ];then
         qref=$dir/../data/human/quant/HEK293T
         cref=$dir/../data/human/class
+
+	index=$dir/../data/human/salmon.index
+	fq=$dir/../data/HEK293T/fq
+	bam=$dir/../results/HEK293T_index
+	mkdir -p $fq
+	cd $fq
+	rm -rf bamtofq.jobs.list
+	for((i=1;i<=192;i++));
+        do
+                script=$fq/$i.sh
+                echo "$bedtools bamtofastq -i $bam/$i.bam -fq $fq/$i.end1.fq -fq2 $fq/$i.end2.fq" > $i.sh
+                chmod +x $script
+                echo $script >> bamtofq.jobs.list
+        done
+        cat bamtofq.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+
+	quant=$qref/salmon_quant
+        mkdir -p $quant
+        cd $quant
+        rm -rf quant.jobs.list
+        for((i=1;i<=192;i++));
+        do
+                script=$quant/$i.sh
+                echo "$salmon quant -i $index -l ISF -1 $fq/$i.end1.fq -2 $fq/$i.end2.fq --validateMappings -o $quant/$i.quant" > $i.sh
+                chmod +x $script
+                echo $script >> quant.jobs.list
+        done
+        cat quant.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+
+	for((i=1;i<=192;i++));
+        do
+                cd $quant/$i.quant
+                awk '{print $2,$3,$4,$5}' quant.sf > quant.sf.col25
+                awk '{print $1}' quant.sf > quant.sf.col1
+                sed -i -r 's/(.{15}).*/\1/' quant.sf.col1
+                paste quant.sf.col1 quant.sf.col25 > quant.sf.mod
+        done
+
+	cd $qref
+	tmap=$result/scallop2/1-100-0.001.scallop2.me.1-100-0.001.scallop2.gtf.tmap
+        rm -rf subref.jobs.list
+	for((i=1;i<=192;i++));
+        do
+                script=$qref/$i.sh
+                echo "mkdir -p $i" > $script
+                echo "cd $i" >> $script
+                echo "$gtfcuff split-quant $tmap $quant/$i.quant/quant.sf.mod 0.1 $dir/../data/human/Homo_sapiens.GRCh38.104.gtf" >> $script
+                chmod +x $script
+                echo $script >> subref.jobs.list
+        done
+        cat subref.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
+
+
         cd $result
         rm -rf qandc.jobs.list
 	for((i=1;i<=192;i++));
