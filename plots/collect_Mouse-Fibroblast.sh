@@ -56,6 +56,8 @@ fi
 if [ "A" == "A" ];then
         qref=$dir/../data/mouse/quant/Mouse-Fibroblast
         cref=$dir/../data/mouse/class
+        mkdir -p $qref
+        mkdir -p $cref
 
 	index=$dir/../data/mouse/salmon.index
         fq=$dir/../data/Mouse-Fibroblast/fq

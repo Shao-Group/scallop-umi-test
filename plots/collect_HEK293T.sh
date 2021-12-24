@@ -56,6 +56,7 @@ fi
 if [ "A" == "A" ];then
         qref=$dir/../data/human/quant/HEK293T
         cref=$dir/../data/human/class
+        mkdir -p $qref
 
 	index=$dir/../data/human/salmon.index
 	fq=$dir/../data/HEK293T/fq
