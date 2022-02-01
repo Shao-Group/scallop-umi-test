@@ -8,12 +8,33 @@ This repository tests and compares the performance of transcript assembler
 Here we provide scripts to download datasets, run the three methods, evaluated the
 predicted transcripts, and reproduce the results and figures in the manuscript (under review).
 
-The pipeline involves in the followint four steps:
-
-1. Download necessary datasets (`data` directory).
-2. Download and/or compile necessary programs (`programs` directory).
+The pipeline involves in the following four steps:
+1. Download and/or compile necessary programs (`programs` directory).
+2. Download necessary datasets (`data` directory).
 3. Run the methods to produce results (`results` directory).
 4. Summarize results and produce figures (`plots` directory).
+
+# Programs
+
+Our experiments involve the following ten programs:
+
+Program | Version | Description
+------------ | ------------ | ------------
+[Scallop2](https://github.com/Shao-Group/Scallop2) | v1.1.2 | Transcript assembler
+[StringTie2](https://github.com/gpertea/stringtie) | v2.1.7 | Transcript assembler
+[Scallop](https://github.com/Kingsford-Group/scallop) | v0.10.5 | Transcript assembler
+[CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2) | v2.1.7 | Transcript assembler
+[zUMIs](https://github.com/sdparekh/zUMIs) | v2.9.4 | Process RNA-seq data with barcodes
+[STAR](https://github.com/alexdobin/STAR) | v2.7.3a | RNA-seq aligner
+[gffcompare](http://ccb.jhu.edu/software/stringtie/gff.shtml) | v0.9.9c | Evaluate assembled transcripts
+[Salmon](https://salmon.readthedocs.io/en/latest/salmon.html) | v1.6.0 | Transcript quantification
+[bedtools](https://bedtools.readthedocs.io/en/latest/content/overview.html) | v2.29.1 | Toolset for genome arithmetic
+[gtfcuff](https://github.com/Kingsford-Group/rnaseqtools) |  | RNA-seq tool
+
+You need to download and/or complile them,
+and then link them to `programs` directory (i.e., `scallop2`, `stringtie2`, `scallop`, and `gffcompare`)
+in `programs` directory.
+
 
 # Datasets
 We compare the four methods on three datasets, namely **HEK293T**, **Mouse-Fibroblast**, and **ENCODE10**. 
@@ -60,28 +81,6 @@ Use the following script in `data` to download annotations and generate indexes:
 ./download_index.annotation.sh
 ```
 The downloaded files will appear under `data/human` and `data/mouse`.
-
-
-# Programs
-
-Our experiments involve the following programs:
-
-Program | Version | Description
------------- | ------------ | ------------ 
-[Scallop2](https://github.com/Shao-Group/Scallop2) | v1.1.2 | Transcript assembler
-[StringTie2](https://github.com/gpertea/stringtie) | v2.1.7 | Transcript assembler
-[Scallop](https://github.com/Kingsford-Group/scallop) | v0.10.5 | Transcript assembler
-[CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2) | v2.1.7 | Transcript assembler
-[zUMIs](https://github.com/sdparekh/zUMIs) | v2.9.4 | Process RNA-seq data with barcodes 
-[STAR](https://github.com/alexdobin/STAR) | v2.7.3a | RNA-seq aligner
-[gffcompare](http://ccb.jhu.edu/software/stringtie/gff.shtml) | v0.9.9c | Evaluate assembled transcripts
-[Salmon](https://salmon.readthedocs.io/en/latest/salmon.html) | v1.6.0 | Transcript quantification
-[bedtools](https://bedtools.readthedocs.io/en/latest/content/overview.html) | v2.29.1 | Toolset for genome arithmetic
-[gtfcuff](https://github.com/Kingsford-Group/rnaseqtools) |  | RNA-seq tool
-
-You need to download and/or complile them,
-and then link them to `programs` directory (i.e., `scallop2`, `stringtie2`, `scallop`, and `gffcompare`)
-in `programs` directory.
 
 
 # Run the Methods
