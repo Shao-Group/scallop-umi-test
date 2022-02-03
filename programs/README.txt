@@ -10,7 +10,7 @@ salmon
 bedtools
 gtfcuff
 
-You need to download and/or compile above programs, and then link them here. Please link the executable files here if they are avaliable (scallop2, stringtie2, scallop, STAR, gffcompare, salmon, bedtools, gtfcuff). Otherwise please link the directory here (zUMIs and class2).
+You need to download and/or compile above programs, and then link them here. Please link the executable files here if they are avaliable (scallop2, stringtie2, scallop, STAR, gffcompare, salmon, bedtools, and gtfcuff). Otherwise please link the directory here (zUMIs and class2).
 
 Make sure the program names are in lower cases (i.e., scallop2, stringtie2, scallop, and gffcompare), and they can to be called by the following path:
 path/to/programs/scallop2
