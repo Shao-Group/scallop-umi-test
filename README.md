@@ -106,4 +106,4 @@ Once the results have been generated, one can use the following scripts in `plot
 You need to install Python3 packages `numpy` and `matplotlib` to process data and generate figures.
 The figures will appear under `plots/HEK293T/figure`, `plots/Mouse-Fibroblast/figure` and `plots/ENCODE10/figure`. 
 
-Default setting in this repo will generate figures for comparing all four assemblers running at default parameters on three datasets. You can modify the scripts in `results` and `plots` to run assemblers at different parameters.
+Default setting will generate figures for comparing all four assemblers running at default parameters on three datasets. You can modify the scripts in `results` and `plots` to run assemblers at different parameters.

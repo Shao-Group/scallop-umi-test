@@ -228,7 +228,7 @@ if [ "A" == "B" ];then
 fi
 
 # stringtie2
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         echo "running stringtie2..."
         cd $result/stringtie2
         rm -rf stringtie2.jobs.list
