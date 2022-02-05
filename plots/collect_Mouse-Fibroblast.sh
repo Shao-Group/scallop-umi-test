@@ -51,9 +51,9 @@ if [ "A" == "A" ];then
 fi
 
 #=======================================
-# quant and class
+# collect results for quant and class
 #=======================================
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         qref=$dir/../data/mouse/quant/Mouse-Fibroblast
         cref=$dir/../data/mouse/class
         mkdir -p $qref
@@ -145,7 +145,7 @@ if [ "A" == "A" ];then
         cat qandc.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
 fi
 
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         for t in scallop2 stringtie2 scallop;
         do
                 for((i=1;i<=369;i++));
@@ -172,7 +172,7 @@ fi
 #=======================================
 # collect results for varying parameters
 #=======================================
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         mkdir -p $data
         for t in scallop2 stringtie2 scallop;
         do
@@ -202,7 +202,7 @@ fi
 # collect codes for full-length
 # and non-full-length transcripts
 #=======================================
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         mkdir -p $data/scallop2/scallop2-full
         cd $data/scallop2/scallop2-full
         rm -rf *.codes

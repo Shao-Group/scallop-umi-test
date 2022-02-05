@@ -86,7 +86,7 @@ The downloaded files will appear under `data/human` and `data/mouse`.
 # Run the Methods
 
 Once the datasets and programs are all available, use the following scripts in `results`
-to run the methods assemblers on the datasets:
+to run the assemblers on the datasets:
 ```
 ./run.HEK293T.sh
 ./run.Mouse-Fibroblast.sh
@@ -94,7 +94,7 @@ to run the methods assemblers on the datasets:
 ```
 In each of these three scripts, you can modify it to run different
 methods (Scallop2, StringTie2, Scallop, and CLASS2). You can also modify the scripts to specify
-how many CPU cores you want to use to run the jobs in parallel.
+how many CPU cores you want to use to run the jobs in parallel. 
 
 
 # Analysis Results and Reproduce Figures
@@ -103,5 +103,7 @@ Once the results have been generated, one can use the following scripts in `plot
 ```
 ./build.figures.sh
 ```
-You may need to install Python3 packages `matplotlib` and `numpy`.
-The figrues will appear under `plots/HEK293T/figure`, `plots/Mouse-Fibroblast/figure` and `plots/ENCODE10/figure`.
+You need to install Python3 packages `numpy` and `matplotlib` to process data and generate figures.
+The figures will appear under `plots/HEK293T/figure`, `plots/Mouse-Fibroblast/figure` and `plots/ENCODE10/figure`. 
+
+Default setting in this repo will generate figures for comparing all four assemblers running at default parameters on three datasets. You can modify the scripts in `results` and `plots` to run assemblers at different parameters.

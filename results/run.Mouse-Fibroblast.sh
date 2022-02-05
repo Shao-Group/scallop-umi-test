@@ -135,7 +135,7 @@ fi
 # p2: minimum coverage
 #=============================================
 # Scallop2
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         echo "running Scallop2..."
         cd $result/scallop2
 	rm -rf scallop2.jobs.list
@@ -158,7 +158,7 @@ if [ "A" == "A" ];then
 fi
 
 # stringtie2
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         echo "running stringtie2..."
         cd $result/stringtie2
         rm -rf stringtie2.jobs.list
@@ -181,7 +181,7 @@ if [ "A" == "A" ];then
 fi
 
 # scallop
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         echo "running scallop..."
         cd $result/scallop
         rm -rf scallop.jobs.list
@@ -209,7 +209,7 @@ fi
 # p2: minimum coverage, using 0.001
 #=============================================
 # Scallop2
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         echo "running Scallop2..."
         cd $result/scallop2
         rm -rf scallop2.jobs.list
@@ -228,7 +228,7 @@ if [ "A" == "A" ];then
 fi
 
 # stringtie2
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         echo "running stringtie2..."
         cd $result/stringtie2
         rm -rf stringtie2.jobs.list
@@ -247,7 +247,7 @@ if [ "A" == "A" ];then
 fi
 
 # scallop
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         echo "running scallop..."
         cd $result/scallop
         rm -rf scallop.jobs.list
@@ -270,7 +270,7 @@ fi
 # transcripts assembled by Scallop2
 #============================================
 # Scallop2
-if [ "A" == "A" ];then
+if [ "A" == "B" ];then
         cd $result/scallop2
         rm -rf scallop2.jobs.list
         for((i=1;i<=369;i++));
@@ -284,4 +284,3 @@ if [ "A" == "A" ];then
         done
         cat scallop2.jobs.list | xargs -L 1 -I CMD -P 32 bash -c CMD 1> /dev/null 2> /dev/null
 fi
-
