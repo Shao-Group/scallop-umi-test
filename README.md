@@ -5,8 +5,8 @@ This repository tests and compares the performance of transcript assembler
 [StringTie2](https://github.com/gpertea/stringtie),
 [Scallop](https://github.com/Kingsford-Group/scallop) and
 [CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2).
-Here we provide scripts to download datasets, run the three methods, evaluated the
-predicted transcripts, and reproduce the results and figures in the manuscript (under review).
+Here we provide scripts to download datasets, run the four methods, evaluated the
+predicted transcripts, and reproduce the results and figures in the Scallop2 paper.
 
 The pipeline involves in the following four steps:
 1. Download and/or compile necessary programs (`programs` directory).
