@@ -107,8 +107,8 @@ For each of these 10 samples, we align it with three RNA-seq aligners,
 Among them the STAR and HISAT2 alignments are
 available at [doi:10.26208/8c06-w247](https://doi.org/10.26208/8c06-w247) (same data used in another research work).
 
-\*Note\*: Please download all 10 STAR aligments and 10 HISAT2 alignments data using the above doi link.
-Please create a folder named `ENCODE10` in `data` directory, and make sure all downloaded data of **ENCODE10** datasets are stored in the `data/ENCODE10` directory.
+\*Note\*: 
+Please download **ENCODE10** dataset using the doi link [doi:10.26208/8c06-w247](https://doi.org/10.26208/8c06-w247). Please create a folder named `ENCODE10` in `data` directory, and make sure all downloaded data of **ENCODE10** dataset are stored in the `data/ENCODE10` directory.
 
 Please make sure `data/ENCODE10` directory contains 10 folders (folder names are accession IDs) and each folder contains one `hisat.sort.bam` and one `star.sort.bam`.
 
@@ -129,7 +129,7 @@ how many CPU cores you want to use to run the jobs in parallel.
 
 # Step 4: Analysis Results and Reproduce Figures
 
-Once all the results of three datasets have been generated, one can use the following scripts in `plots` to reproduce the figures:
+Once all the results of four methods on three datasets have been generated, one can use the following scripts in `plots` to reproduce the figures:
 ```
 ./build.figures.sh
 ```
