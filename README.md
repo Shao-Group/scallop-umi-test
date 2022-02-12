@@ -5,7 +5,7 @@ This repository tests and compares the performance of transcript assembler
 [StringTie2](https://github.com/gpertea/stringtie),
 [Scallop](https://github.com/Kingsford-Group/scallop) and
 [CLASS2](http://ccb.jhu.edu/people/florea/research/CLASS2).
-Here we provide scripts to download datasets, run the four methods, evaluated the
+Here we provide instructions to download and link all necessary tools, we also provide scripts to download datasets, run the four methods, evaluated the
 predicted transcripts, and reproduce the results and figures in the Scallop2 paper.
 
 The pipeline involves in the following four steps:
@@ -16,11 +16,13 @@ The pipeline involves in the following four steps:
 
 **Important Notice**: Tools are not downloaded automatically.
 Users need to separately download and link all necessary tools to the folder `programs` before running scripts. 
-Please follow the instructions in Step 1 Download Tools to download all necessary tools.
+Please follow the instructions in Step 1 Download Tools to download and link all necessary tools.
 
-# Step 1 : Download Tools
+# Step 1 : Download and Link Tools
 
-Our experiments involve the following ten tools:
+Our experiments involve the following ten tools.
+\*Note\*: Tools are not downloaded automatically.
+Users need to separately download all neccessary tools and link them to the folder `programs` before running any scripts.
 
 Tool | Version | Description
 ------------ | ------------ | ------------
@@ -35,10 +37,9 @@ Tool | Version | Description
 [bedtools](https://bedtools.readthedocs.io/en/latest/content/overview.html) | v2.29.1 | Toolset for genome arithmetic
 [gtfcuff](https://github.com/Kingsford-Group/rnaseqtools) |  | RNA-seq tool
 
-\*Note\*: Tools are not downloaded automatically.
-Users need to separately download and link all necessary tools to the folder `programs` before running scripts.
+Instructions on Download and Link Tools:
 
-**Step 1.1**: Click above tools and those hyperlinks will navigate users to the homepage of tools. Then users can download/install tools according to the instructions provided in their homepages. 
+**Step 1.1**: Click above tools and those hyperlinks will navigate users to the homepage of tools. Then please follow the instructions provided in tools' homepages to download and/or compile above ten tools.
 
 **Step 1.2**: Please link the executable files to `programs` directory if they are avaliable (scallop2, stringtie2, scallop, STAR, gffcompare, salmon, bedtools, and gtfcuff). Otherwise please link the directory here (zUMIs and class2).
 
@@ -47,7 +48,7 @@ Make sure the program names are in lower cases (i.e., scallop2, stringtie2, scal
 your/path/to/programs/scallop2
 your/path/to/programs/stringtie2
 your/path/to/programs/scallop
-your/path/to/programs/class2/run\_class.pl
+your/path/to/programs/class2/run_class.pl
 your/path/to/programs/zUMIs/zUMIs.sh
 your/path/to/programs/STAR
 your/path/to/programs/gffcomapre
@@ -56,18 +57,22 @@ your/path/to/programs/bedtools
 your/path/to/programs/gtfcuff
 ```
 
+Please make sure all necessary tools have been separately downloaded and linked to the folder `programs` before running experiments.
+
 # Step 2: Download Datasets and Preprocess
 Once all necessary tools are all available, we can start to download and preprocess data.
 
 We compare the four methods on three datasets, namely **HEK293T**, **Mouse-Fibroblast**, and **ENCODE10**. 
 Besides, we also need the annotation files for evaluation purposes.
 In directory `data`, we provide metadata for these datasets.
-Also, we provide scripts to download and preprocess **HEK293T** and **Mouse-Fibroblast**.
-For dataset **ENCODE10**, we provide its doi link and users need to download data using the doi link.
+
+For dataset **ENCODE10**, we provide its doi link and users need to download ENCODE10 data using the doi link.
+For datasets **HEK293T** and **Mouse-Fibroblast**, we provide scripts to download and preprocess them.
+For annotations, we provide script to download and index them.
 
 ## Annotations
 For **HEK293T** and **ENCODE10** datasets, we use human annotation database as reference;
-for **Mouse-Fibroblast** dataset, we use the mouse annotation database as reference.
+for **Mouse-Fibroblast** dataset, we use mouse annotation database as reference.
 Use the following script in `data` to download annotations and generate indexes:
 ```
 ./download_index.annotation.sh
@@ -131,8 +136,11 @@ how many CPU cores you want to use to run the jobs in parallel.
 
 Once all the results of four methods on three datasets have been generated, one can use the following scripts in `plots` to reproduce the figures:
 ```
-./build.figures.sh
+./build.Smartseq3.figures.sh
+./build.ENCODE10.figures.sh
 ```
+Here the script `build.Smartseq3.figures.sh` will generate figures for **HEK293T**, **Mouse-Fibroblast**. Script `build.ENCODE10.figures.sh` will generate figures for **ENCODE10**.
+
 **Important Notice**: You need to install Python3 packages `numpy` and `matplotlib` to process data and generate figures.
 
 The figures will appear under `plots/HEK293T/figure`, `plots/Mouse-Fibroblast/figure` and `plots/ENCODE10/figure`. 
