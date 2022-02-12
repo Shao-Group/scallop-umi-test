@@ -12,7 +12,7 @@ if [ "A" == "A" ];then
 	wget ftp://ftp.ebi.ac.uk/pub/databases/microarray/data/experiment/MTAB/E-MTAB-8735/Smartseq3.Fibroblasts.GelCut.I2.fastq.gz
 fi
 
-# step 2: preprocess
+# step 2: preprocess by tool zUMIs
 if [ "A" == "A" ];then
         cd $dir
 	sed -i "s! curDir! $dir! g" Mouse-Fibroblast.yaml

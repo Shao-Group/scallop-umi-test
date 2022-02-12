@@ -57,9 +57,13 @@ your/path/to/programs/gtfcuff
 ```
 
 # Step 2: Download Datasets and Preprocess
+Once all necessary tools are all available, we can start to download and preprocess data.
+
 We compare the four methods on three datasets, namely **HEK293T**, **Mouse-Fibroblast**, and **ENCODE10**. 
 Besides, we also need the annotation files for evaluation purposes.
-In directory `data`, we provide metadata for these datasets, and also provide scripts to download them.
+In directory `data`, we provide metadata for these datasets.
+Also, we provide scripts to download and preprocess **HEK293T** and **Mouse-Fibroblast**.
+For dataset **ENCODE10**, we provide its doi link and users need to download data using the doi link.
 
 ## Annotations
 For **HEK293T** and **ENCODE10** datasets, we use human annotation database as reference;
@@ -95,12 +99,18 @@ The downloaded files will appear under `data`.
 ## **ENCODE10**
 The third dataset, namely **ENCODE10**,
 contains 10 human RNA-seq samples downloaded from [ENCODE project (2003--2012)](https://genome.ucsc.edu/ENCODE/).
+
 All these samples are sequenced with strand-specific and paired-end protocols.
 For each of these 10 samples, we align it with three RNA-seq aligners,
 [STAR](https://github.com/alexdobin/STAR), and
 [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml).
 Among them the STAR and HISAT2 alignments are
 available at [doi:10.26208/8c06-w247](https://doi.org/10.26208/8c06-w247) (same data used in another research work).
+
+\*Note\*: Please download all 10 STAR aligments and 10 HISAT2 alignments data using the above doi link.
+Please create a folder named `ENCODE10` in `data` directory, and make sure all downloaded data of **ENCODE10** datasets are stored in the `data/ENCODE10` directory.
+
+Please make sure `data/ENCODE10` directory contains 10 folders (folder names are accession IDs) and each folder contains one `hisat.sort.bam` and one `star.sort.bam`.
 
 
 # Step 3: Run the Methods

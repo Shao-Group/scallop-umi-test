@@ -11,7 +11,7 @@ if [ "A" == "A" ];then
 	wget ftp://ftp.ebi.ac.uk/pub/databases/microarray/data/experiment/MTAB/E-MTAB-8735/Smartseq3.diySpike.I2.fastq.gz
 fi
 
-# step 2: preprocess
+# step 2: preprocessi by tool zUMIs
 if [ "A" == "A" ];then
         cd $dir
 	sed -i "s! curDir! $dir! g" HEK293T.yaml

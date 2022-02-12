@@ -27,7 +27,7 @@ if [ "A" == "A" ];then
 	gzip -d Mus_musculus.GRCm39.cdna.all.fa.gz
 fi
 
-# step 2: indexing
+# step 2: indexing by STAR
 if [ "A" == "A" ];then
 	cd $dir/human
 	mkdir -p human_index
@@ -48,8 +48,8 @@ if [ "A" == "A" ];then
      		--sjdbOverhang 149
 fi
 
-# salmon index
-if [ "A" == "A" ];then
+# indexing by Salmon, optional for additional experiments
+if [ "A" == "B" ];then
 	cd $dir/human
 	$salmon index -t Homo_sapiens.GRCh38.cdna.all.fa -i salmon.index -p 16
 	cd $dir/mouse
