@@ -1,6 +1,21 @@
 #!/bin/bash
 dir=`pwd`
-salmon=$dir/../programs/salmon
+STAR=$dir/../programs/STAR
+
+# step 0: check all to-be-used tools/data
+if [ "A" == "A" ];then
+	echo "================================================================="
+	echo "start to check if to-be-used tools/data are properly installed..."
+	echo "================================================================="
+	if [ -e $STAR ];then
+		echo -e "Find tool STAR successfully!"
+	else
+		echo -e "Tool STAR has not been linked to the directory 'programs' yet.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to install and link all necessary tools to the directory 'programs'."
+		echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+    		exit 1
+	fi
+	echo -e "Find all to-be-used tools/data successfully!"
+fi
 
 # step 1: download reference
 if [ "A" == "A" ];then
@@ -31,7 +46,7 @@ fi
 if [ "A" == "A" ];then
 	cd $dir/human
 	mkdir -p human_index
-	$dir/../programs/STAR --runMode genomeGenerate \
+	$STAR --runMode genomeGenerate \
      		--runThreadN 30 \
      		--genomeDir ./human_index \
      		--genomeFastaFiles $dir/human/Homo_sapiens.GRCh38.dna.primary_assembly.fa \
@@ -40,7 +55,7 @@ if [ "A" == "A" ];then
 
 	cd $dir/mouse
 	mkdir -p mouse_index
-	$dir/../programs/STAR --runMode genomeGenerate \
+	$STAR --runMode genomeGenerate \
      		--runThreadN 30 \
      		--genomeDir ./mouse_index \
      		--genomeFastaFiles $dir/mouse/Mus_musculus.GRCm39.dna.primary_assembly.fa \
@@ -50,6 +65,7 @@ fi
 
 # indexing by Salmon, optional for additional experiments
 if [ "A" == "B" ];then
+	salmon=$dir/../programs/salmon
 	cd $dir/human
 	$salmon index -t Homo_sapiens.GRCh38.cdna.all.fa -i salmon.index -p 16
 	cd $dir/mouse

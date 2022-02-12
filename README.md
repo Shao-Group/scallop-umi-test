@@ -41,9 +41,9 @@ Instructions on Download and Link Tools:
 
 **Step 1.1**: Click above tools and those hyperlinks will navigate users to the homepage of tools. Then please follow the instructions provided in tools' homepages to download and/or compile above ten tools.
 
-**Step 1.2**: Please link the executable files to `programs` directory if they are avaliable (scallop2, stringtie2, scallop, STAR, gffcompare, salmon, bedtools, and gtfcuff). Otherwise please link the directory here (zUMIs and class2).
+**Step 1.2**: Please link or copy the executable files to `programs` directory if they are avaliable (scallop2, stringtie2, scallop, STAR, gffcompare, salmon, bedtools, and gtfcuff). Otherwise please link the directory here (zUMIs and class2).
 
-Make sure the program names are in lower cases (i.e., scallop2, stringtie2, scallop, and gffcompare), and they can be called by the following path:
+Make sure tools can be called by the following path:
 ```
 your/path/to/programs/scallop2
 your/path/to/programs/stringtie2
