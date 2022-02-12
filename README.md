@@ -9,16 +9,20 @@ Here we provide scripts to download datasets, run the four methods, evaluated th
 predicted transcripts, and reproduce the results and figures in the Scallop2 paper.
 
 The pipeline involves in the following four steps:
-1. Download and/or compile necessary programs (`programs` directory).
+1. Download and/or compile necessary tools (`programs` directory).
 2. Download necessary datasets (`data` directory).
 3. Run the methods to produce results (`results` directory).
 4. Summarize results and produce figures (`plots` directory).
 
-# Programs
+\*Important notice\*: Tools are not downloaded automatically.
+Users need to separately download and link all necessary tools to the folder `programs` before running scripts. 
+Please follow the instructions in Step 1 Download Tools to download all necessary tools.
 
-Our experiments involve the following ten programs:
+# Download Tools
 
-Program | Version | Description
+Our experiments involve the following ten tools:
+
+Tool | Version | Description
 ------------ | ------------ | ------------
 [Scallop2](https://github.com/Shao-Group/Scallop2) | v1.1.2 | Transcript assembler
 [StringTie2](https://github.com/gpertea/stringtie) | v2.1.7 | Transcript assembler
