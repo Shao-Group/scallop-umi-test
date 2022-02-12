@@ -35,10 +35,24 @@ Tool | Version | Description
 [bedtools](https://bedtools.readthedocs.io/en/latest/content/overview.html) | v2.29.1 | Toolset for genome arithmetic
 [gtfcuff](https://github.com/Kingsford-Group/rnaseqtools) |  | RNA-seq tool
 
-You need to download and/or complile them,
-and then link them to `programs` directory (i.e., `scallop2`, `stringtie2`, `scallop`, and `gffcompare`)
-in `programs` directory.
+Tools are not downloaded automatically.
+Users need to separately download and link all necessary tools to the folder `programs` before running scripts.
 
+Please link the executable files here if they are avaliable (scallop2, stringtie2, scallop, STAR, gffcompare, salmon, bedtools, and gtfcuff). Otherwise please link the directory here (zUMIs and class2).
+
+Make sure the program names are in lower cases (i.e., scallop2, stringtie2, scallop, and gffcompare), and they can be called by the following path:
+```
+your/path/to/programs/scallop2
+your/path/to/programs/stringtie2
+your/path/to/programs/scallop
+your/path/to/programs/class2/run\_class.pl
+your/path/to/programs/zUMIs/zUMIs.sh
+your/path/to/programs/STAR
+your/path/to/programs/gffcomapre
+your/path/to/programs/salmon
+your/path/to/programs/bedtools
+your/path/to/programs/gtfcuff
+```
 
 # Datasets
 We compare the four methods on three datasets, namely **HEK293T**, **Mouse-Fibroblast**, and **ENCODE10**. 
