@@ -14,11 +14,11 @@ The pipeline involves in the following four steps:
 3. Run the methods to produce results (`results` directory).
 4. Summarize results and produce figures (`plots` directory).
 
-\*Important notice\*: Tools are not downloaded automatically.
+\*Important Notice\*: Tools are not downloaded automatically.
 Users need to separately download and link all necessary tools to the folder `programs` before running scripts. 
 Please follow the instructions in Step 1 Download Tools to download all necessary tools.
 
-# Download Tools
+# Step 1 : Download Tools
 
 Our experiments involve the following ten tools:
 
@@ -38,7 +38,9 @@ Tool | Version | Description
 Tools are not downloaded automatically.
 Users need to separately download and link all necessary tools to the folder `programs` before running scripts.
 
-Please link the executable files here if they are avaliable (scallop2, stringtie2, scallop, STAR, gffcompare, salmon, bedtools, and gtfcuff). Otherwise please link the directory here (zUMIs and class2).
+**Step 1.1**: Click above tools and those hyperlinks will navigate users to the homepage of tools. Then users can download/install tool according to the instructions provided by each tool. 
+
+**Step 1.2**: Please link the executable files to `programs` directory if they are avaliable (scallop2, stringtie2, scallop, STAR, gffcompare, salmon, bedtools, and gtfcuff). Otherwise please link the directory here (zUMIs and class2).
 
 Make sure the program names are in lower cases (i.e., scallop2, stringtie2, scallop, and gffcompare), and they can be called by the following path:
 ```
@@ -54,7 +56,7 @@ your/path/to/programs/bedtools
 your/path/to/programs/gtfcuff
 ```
 
-# Datasets
+# Step 2: Download Datasets and preprocess
 We compare the four methods on three datasets, namely **HEK293T**, **Mouse-Fibroblast**, and **ENCODE10**. 
 Besides, we also need the annotation files for evaluation purposes.
 In directory `data`, we provide metadata for these datasets, and also provide scripts to download them.
@@ -101,7 +103,7 @@ Use the following script in `data` to download annotations and generate indexes:
 The downloaded files will appear under `data/human` and `data/mouse`.
 
 
-# Run the Methods
+# Step 3: Run the Methods
 
 Once the datasets and programs are all available, use the following scripts in `results`
 to run the assemblers on the datasets:
@@ -115,7 +117,7 @@ methods (Scallop2, StringTie2, Scallop, and CLASS2). You can also modify the scr
 how many CPU cores you want to use to run the jobs in parallel. 
 
 
-# Analysis Results and Reproduce Figures
+# Step 4: Analysis Results and Reproduce Figures
 
 Once the results have been generated, one can use the following scripts in `plots` to reproduce the figures:
 ```
