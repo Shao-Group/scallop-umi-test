@@ -14,7 +14,7 @@ The pipeline involves in the following four steps:
 3. Run the methods to produce results (`results` directory).
 4. Summarize results and produce figures (`plots` directory).
 
-\*Important Notice\*: Tools are not downloaded automatically.
+**Important Notice**: Tools are not downloaded automatically.
 Users need to separately download and link all necessary tools to the folder `programs` before running scripts. 
 Please follow the instructions in Step 1 Download Tools to download all necessary tools.
 
@@ -35,10 +35,10 @@ Tool | Version | Description
 [bedtools](https://bedtools.readthedocs.io/en/latest/content/overview.html) | v2.29.1 | Toolset for genome arithmetic
 [gtfcuff](https://github.com/Kingsford-Group/rnaseqtools) |  | RNA-seq tool
 
-Tools are not downloaded automatically.
+\*Note\*: Tools are not downloaded automatically.
 Users need to separately download and link all necessary tools to the folder `programs` before running scripts.
 
-**Step 1.1**: Click above tools and those hyperlinks will navigate users to the homepage of tools. Then users can download/install tool according to the instructions provided by each tool. 
+**Step 1.1**: Click above tools and those hyperlinks will navigate users to the homepage of tools. Then users can download/install tools according to the instructions provided in their homepages. 
 
 **Step 1.2**: Please link the executable files to `programs` directory if they are avaliable (scallop2, stringtie2, scallop, STAR, gffcompare, salmon, bedtools, and gtfcuff). Otherwise please link the directory here (zUMIs and class2).
 
@@ -119,11 +119,12 @@ how many CPU cores you want to use to run the jobs in parallel.
 
 # Step 4: Analysis Results and Reproduce Figures
 
-Once the results have been generated, one can use the following scripts in `plots` to reproduce the figures:
+Once all the results of three datasets have been generated, one can use the following scripts in `plots` to reproduce the figures:
 ```
 ./build.figures.sh
 ```
-You need to install Python3 packages `numpy` and `matplotlib` to process data and generate figures.
+**Important Notice**: You need to install Python3 packages `numpy` and `matplotlib` to process data and generate figures.
+
 The figures will appear under `plots/HEK293T/figure`, `plots/Mouse-Fibroblast/figure` and `plots/ENCODE10/figure`. 
 
 Default setting will generate figures for comparing all four assemblers running at default parameters on three datasets. You can modify the scripts in `results` and `plots` to run assemblers at different parameters.
