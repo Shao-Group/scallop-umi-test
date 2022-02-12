@@ -56,10 +56,19 @@ your/path/to/programs/bedtools
 your/path/to/programs/gtfcuff
 ```
 
-# Step 2: Download Datasets and preprocess
+# Step 2: Download Datasets and Preprocess
 We compare the four methods on three datasets, namely **HEK293T**, **Mouse-Fibroblast**, and **ENCODE10**. 
 Besides, we also need the annotation files for evaluation purposes.
 In directory `data`, we provide metadata for these datasets, and also provide scripts to download them.
+
+## Annotations
+For **HEK293T** and **ENCODE10** datasets, we use human annotation database as reference;
+for **Mouse-Fibroblast** dataset, we use the mouse annotation database as reference.
+Use the following script in `data` to download annotations and generate indexes:
+```
+./download_index.annotation.sh
+```
+The downloaded files will appear under `data/human` and `data/mouse`.
 
 ## **HEK293T**
 The first dataset, namely **HEK293T**,
@@ -92,15 +101,6 @@ For each of these 10 samples, we align it with three RNA-seq aligners,
 [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml).
 Among them the STAR and HISAT2 alignments are
 available at [doi:10.26208/8c06-w247](https://doi.org/10.26208/8c06-w247) (same data used in another research work).
-
-## Annotations
-For **HEK293T** and **ENCODE10** datasets, we use human annotation database as reference;
-for **Mouse-Fibroblast** dataset, we use the mouse annotation database as reference.
-Use the following script in `data` to download annotations and generate indexes:
-```
-./download_index.annotation.sh
-```
-The downloaded files will appear under `data/human` and `data/mouse`.
 
 
 # Step 3: Run the Methods
