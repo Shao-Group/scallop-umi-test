@@ -5,16 +5,16 @@ STAR=$dir/../programs/STAR
 # step 0: check all to-be-used tools/data
 if [ "A" == "A" ];then
 	echo "================================================================="
-	echo "start to check if to-be-used tools/data are properly installed..."
+	echo "Check if to-be-used tools/data are properly linked..."
 	echo "================================================================="
 	if [ -e $STAR ];then
-		echo -e "Find tool STAR successfully!"
+		echo -e "Tool STAR found successfully!"
 	else
-		echo -e "Tool STAR has not been linked to the directory 'programs' yet.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to install and link all necessary tools to the directory 'programs'."
+		echo -e "Tool STAR not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
 		echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
     		exit 1
 	fi
-	echo -e "Find all to-be-used tools/data successfully!"
+	echo -e "To-be-used tools/data found successfully!"
 fi
 
 # step 1: download reference
