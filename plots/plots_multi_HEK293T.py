@@ -230,7 +230,7 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
     ad_st = [0]*369
     ad_sc = [0]*369
     
-    for i in hi:
+    for i in mi:
         file1 = './Mouse-Fibroblast/stringtie2/' + str(i) + '.stringtie2.me.roc-cor'
         file2 = './Mouse-Fibroblast/stringtie2/' + str(i) + '.stringtie2.me.roc-pre'
         cor = np.loadtxt(file1)
@@ -242,7 +242,7 @@ def plot_adjusted(scallop2_match, stringtie2_match, scallop_match, class2_match,
                 ad_sc[i-1]=(float(mscallop2_pre[i-1]))
                 break
             
-    for i in hni:
+    for i in mni:
         file1 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.me.roc-cor'
         file2 = './Mouse-Fibroblast/scallop2/' + str(i) + '.scallop2.me.roc-pre'
         cor = np.loadtxt(file1)
