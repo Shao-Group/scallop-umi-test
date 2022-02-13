@@ -102,7 +102,7 @@ For dataset **ENCODE10**, we provide its doi link and users need to download ENC
 For datasets **HEK293T** and **Mouse-Fibroblast**, we provide scripts to download and preprocess them.
 For annotations, we provide script to download and index them.
 
-## Step 2.1 Download Annotations and Create indexes
+## Step 2.1 Download Annotations and Create Index
 For **HEK293T** and **ENCODE10** datasets, we use human annotation database as reference;
 for **Mouse-Fibroblast** dataset, we use mouse annotation database as reference.
 Use the following script in `data` to download annotations and generate indexes:
