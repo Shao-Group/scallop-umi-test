@@ -21,8 +21,8 @@ Please follow the instructions in Step 1 Download Tools to download and link all
 # Step 1 : Download and Link Tools
 
 Our experiments involve the following ten tools.
-\*Note\*: Tools are not downloaded automatically.
-Users need to separately download all neccessary tools and link them to the folder `programs` before running any experiments.
+Tools are not downloaded automatically.
+Users need to separately download all neccessary tools and link them to the folder `programs` before running experiments.
 
 Tool | Version | Description
 ------------ | ------------ | ------------
@@ -56,12 +56,12 @@ your/path/to/programs/salmon
 your/path/to/programs/bedtools
 your/path/to/programs/gtfcuff
 ```
-you may need to rename some executable files (e.g. rename 'stringtie' to 'stringtie2') or folders (e.g. rename 'CLASS-2.1.7' to 'class2') to make sure that all tools can be called successfully by above paths. 
+You may need to rename some executable files (e.g. rename 'stringtie' to 'stringtie2') or folders (e.g. rename 'CLASS-2.1.7' to 'class2') to make sure that all tools can be called successfully by above paths. 
 
-## **Example**
-Here we provide an example how to download tool and copy/link it to the `programs` directory. We use tool [STAR](https://github.com/alexdobin/STAR) as an example. 
+## **Example of how to download and copy/link tool to `programs`**
+Here we provide an example how to download and copy/link tool to the `programs` directory. We use tool [STAR](https://github.com/alexdobin/STAR) as an example. 
 
-a) Following the step 1.1, click the STAR in the above table and we will be navigated to the GitHub page of STAR.
+a) Following the step 1.1, click the [STAR](https://github.com/alexdobin/STAR) in the above table and we will be navigated to its GitHub page.
 
 b) Then click the **Releases** in the middel-right of that page and find the release version 'STAR 2.7.3a ______ 2019/10/08'.
 
