@@ -10,6 +10,55 @@ class2=$dir/../programs/class2/run_class.pl
 gffcompare=$dir/../programs/gffcompare
 result=$dir/HEK293T_results
 
+# step 0: check to-be-used tools
+if [ "A" == "A" ];then
+	echo "================================================================="
+	echo "Check if to-be-used tools are properly linked..."
+	echo "================================================================="
+	if [ -e $scallop2 ];then
+		echo -e "Tool Scallop2 found successfully!"
+	else
+		echo -e "Tool Scallop2 not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+		echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+    		exit 1
+	fi
+
+	if [ -e $stringtie2 ];then
+                echo -e "Tool StringTie2 found successfully!"
+        else
+                echo -e "Tool StringTie2 not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+                echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+                exit 1
+        fi
+
+        if [ -e $scallop ];then
+                echo -e "Tool Scallop found successfully!"
+        else
+                echo -e "Tool Scallop not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+                echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+                exit 1
+        fi
+        
+	if [ -e $class2 ];then
+                echo -e "Tool CLASS2 found successfully!"
+        else
+                echo -e "Tool CLASS2 not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+                echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+                exit 1
+        fi
+        
+	if [ -e $gffcompare ];then
+                echo -e "Tool gffcompare found successfully!"
+        else
+                echo -e "Tool gffcompare not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+                echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+                exit 1
+        fi
+
+	echo -e "To-be-used tools/data found successfully!"
+
+fi
+
 #============================================
 # create index for cells
 #=============================================
