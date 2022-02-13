@@ -55,7 +55,7 @@ if [ "A" == "A" ];then
                 exit 1
         fi
 
-	echo -e "To-be-used tools/data found successfully!"
+	echo -e "To-be-used tools found successfully!"
 
 fi
 

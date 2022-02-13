@@ -12,7 +12,7 @@ result=$dir/ENCODE10_results
 # step 0: check to-be-used tools/data
 if [ "A" == "A" ];then
 	echo "================================================================="
-	echo "Check if to-be-used tools/data are properly linked..."
+	echo "Check if to-be-used tools/datasets are properly linked..."
 	echo "================================================================="
 	if [ -e $data ];then
 		echo -e "Dataset ENCODE10 found successfully!"
@@ -62,7 +62,7 @@ if [ "A" == "A" ];then
                 exit 1
         fi
 
-	echo -e "To-be-used tools/data found successfully!"
+	echo -e "To-be-used tools/datasets found successfully!"
 
 fi
 
