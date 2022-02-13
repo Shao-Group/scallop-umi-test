@@ -532,7 +532,7 @@ def main():
     plot_sample(hmatch, hpre, smatch, spre)
     plot_bar_num(hmatch, smatch)
     plot_bar_pre(hpre, spre)
-    plot_bar_adjusted_pre(hmatch, hpre, smatch, spre)
+    #plot_bar_adjusted_pre(hmatch, hpre, smatch, spre)
 
 if __name__ == '__main__':
     main()
