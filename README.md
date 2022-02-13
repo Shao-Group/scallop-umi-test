@@ -76,15 +76,15 @@ A folder named 'STAR-2.7.3a' will appear.
 e) Enter directory 'STAR-2.7.3a' and we can find pre-compiled executables for Linux and Mac OS X under 'bin'. Choose the one fits your operating system.
 Suppose we are going to use the one for Linux_x86_64, we will enter the directory 'Linux_x86_64' under 'bin'. 
 
-f) Following the step 1.2, we need to copy/link the executable file 'STAR' to directory `programs`. If you would like to copy the executable file 'STAR' to directory `programs`, you can use command (please make sure you replace the 'your/path/to/programs' with your true path to directory `programs`):
+f) Following the step 1.2, we need to copy/link the executable file 'STAR' to directory `programs`. If you would like to copy the executable file 'STAR' to directory `programs`, you can use the command (please make sure you replace the 'your/path/to/programs' with your true path to directory `programs`):
 ```
 cp STAR your/path/to/programs/
 ```
-or if you would like to do link, you will need to enter the directory `programs`first using command (please make sure you replace the 'your/path/to/programs' with your true path to directory `programs`): 
+or if you would like to do link, you will need to enter the directory `programs`firstly using the command (please make sure you replace the 'your/path/to/programs' with your true path to directory `programs`): 
 ```
 cd your/path/to/programs/
 ```
-and then link the executable file 'STAR' there using command (please make sure you replace the 'your/path/to/STAR' with your true path to executable file 'STAR'):
+and then link the executable file 'STAR' using command (please make sure you replace the 'your/path/to/STAR' with your true path to executable file 'STAR'):
 ```
 ln -sf your/path/to/STAR ./
 ```
