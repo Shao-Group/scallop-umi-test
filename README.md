@@ -102,15 +102,16 @@ For dataset **ENCODE10**, we provide its doi link and users need to download ENC
 For datasets **HEK293T** and **Mouse-Fibroblast**, we provide scripts to download and preprocess them.
 For annotations, we provide script to download and index them.
 
-## Annotations
+## Step 2.1 Download Annotations
 For **HEK293T** and **ENCODE10** datasets, we use human annotation database as reference;
 for **Mouse-Fibroblast** dataset, we use mouse annotation database as reference.
 Use the following script in `data` to download annotations and generate indexes:
 ```
 ./download_index.annotation.sh
 ```
-The downloaded files will appear under `data/human` and `data/mouse`.
+The files will appear under `data/human` and `data/mouse`.
 
+## Step 2.2 Download Datasets
 ## **HEK293T**
 The first dataset, namely **HEK293T**,
 contains 192 human cells downloaded from [Smart-seq3 project (2020)](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-8735).
@@ -144,10 +145,10 @@ For each of these 10 samples, we align it with three RNA-seq aligners,
 Among them the STAR and HISAT2 alignments are
 available at [doi:10.26208/8c06-w247](https://doi.org/10.26208/8c06-w247) (same data used in another research work).
 
-\*Note\*: 
+**Important Notice**: 
 Please download **ENCODE10** dataset using the doi link [doi:10.26208/8c06-w247](https://doi.org/10.26208/8c06-w247). Please create a folder named `ENCODE10` in `data` directory, and make sure all downloaded data of **ENCODE10** dataset are stored in the `data/ENCODE10` directory.
 
-Please make sure `data/ENCODE10` directory contains 10 folders (folder names are accession IDs) and each folder contains one `hisat.sort.bam` and one `star.sort.bam`.
+Please make sure `data/ENCODE10` directory contains 10 folders (folder names are Accession IDs) and each folder contains one `hisat.sort.bam` and one `star.sort.bam`.
 
 
 # Step 3: Run the Methods
@@ -159,6 +160,9 @@ to run the assemblers on the datasets:
 ./run.Mouse-Fibroblast.sh
 ./run.ENCODE10.sh
 ```
+
+**Note**: CLASS2 runs more than 11 days on sample SRR387661 of **ENCODE10** dataset during our experiments. Therefore, you may also need to terminate the `run.HEK293T.sh` manually.
+
 In each of these three scripts, you can modify it to run different
 methods (Scallop2, StringTie2, Scallop, and CLASS2). You can also modify the scripts to specify
 how many CPU cores you want to use to run the jobs in parallel. 
