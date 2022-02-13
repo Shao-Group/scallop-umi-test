@@ -7,6 +7,29 @@ gffcompare=$dir/../programs/gffcompare
 salmon=$dir/../programs/salmon
 bedtools=$dir/../programs/bedtools
 
+# step 0: check all to-be-used tools
+if [ "A" == "A" ];then
+	echo "================================================================="
+	echo "Check if to-be-used tools are properly linked..."
+	echo "================================================================="
+	if [ -e $gffcompare ];then
+		echo -e "Tool gffcompare found successfully!"
+	else
+		echo -e "Tool gffcompare not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+		echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+    		exit 1
+	fi
+        if [ -e $gtfcuff ];then
+                echo -e "Tool gtfcuff found successfully!"
+        else
+                echo -e "Tool gtfcuff not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+                echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+                exit 1
+        fi
+
+	echo -e "To-be-used tools/data found successfully!"
+fi
+
 #=============================
 # collect results
 #=============================
