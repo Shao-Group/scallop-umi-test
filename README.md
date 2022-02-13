@@ -102,7 +102,7 @@ For dataset **ENCODE10**, we provide its doi link and users need to download ENC
 For datasets **HEK293T** and **Mouse-Fibroblast**, we provide scripts to download and preprocess them.
 For annotations, we provide script to download and index them.
 
-## Step 2.1 Download Annotations
+## Step 2.1 Download Annotations and Create indexes
 For **HEK293T** and **ENCODE10** datasets, we use human annotation database as reference;
 for **Mouse-Fibroblast** dataset, we use mouse annotation database as reference.
 Use the following script in `data` to download annotations and generate indexes:
@@ -175,7 +175,7 @@ Once all the results of four methods on three datasets have been generated, one 
 ./build.Smartseq3.figures.sh
 ./build.ENCODE10.figures.sh
 ```
-Here the script `build.Smartseq3.figures.sh` will generate figures for **HEK293T**, **Mouse-Fibroblast**. Script `build.ENCODE10.figures.sh` will generate figures for **ENCODE10**.
+Here `build.Smartseq3.figures.sh` will generate figures for **HEK293T**, **Mouse-Fibroblast**. `build.ENCODE10.figures.sh` will generate figures for **ENCODE10**.
 
 **Important Notice**: You need to install Python3 packages `numpy` and `matplotlib` to process data and generate figures.
 
