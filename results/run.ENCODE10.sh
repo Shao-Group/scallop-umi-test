@@ -9,6 +9,63 @@ class2=$dir/../programs/class2/run_class.pl
 gffcompare=$dir/../programs/gffcompare
 result=$dir/ENCODE10_results
 
+# step 0: check to-be-used tools/data
+if [ "A" == "A" ];then
+	echo "================================================================="
+	echo "Check if to-be-used tools/data are properly linked..."
+	echo "================================================================="
+	if [ -e $data ];then
+		echo -e "Dataset ENCODE10 found successfully!"
+	else
+		echo -e "Dataset ENCODE10 not found in directory 'data'.\nPlease follow the instructions in 'Step 2.2: Download Datasets' section 'ENCODE10' to properly download ENCODE10 data to the directory 'data'."
+		echo -e "\nNote: ENCODE10 data are not downloaded automatically. Users need to download through the ENCODE10 doi link provided in the instructions, and store them properly in 'data/ENCODE10' directory before running experiments.\n"
+    		exit 1
+	fi
+	
+	if [ -e $scallop2 ];then
+		echo -e "Tool Scallop2 found successfully!"
+	else
+		echo -e "Tool Scallop2 not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+		echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+    		exit 1
+	fi
+
+	if [ -e $stringtie2 ];then
+                echo -e "Tool StringTie2 found successfully!"
+        else
+                echo -e "Tool StringTie2 not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+                echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+                exit 1
+        fi
+
+        if [ -e $scallop ];then
+                echo -e "Tool Scallop found successfully!"
+        else
+                echo -e "Tool Scallop not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+                echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+                exit 1
+        fi
+        
+	if [ -e $class2 ];then
+                echo -e "Tool CLASS2 found successfully!"
+        else
+                echo -e "Tool CLASS2 not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+                echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+                exit 1
+        fi
+        
+	if [ -e $gffcompare ];then
+                echo -e "Tool gffcompare found successfully!"
+        else
+                echo -e "Tool gffcompare not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
+                echo -e "\nNote: Tools are not downloaded automatically. Users need to download and/or compile all required tools, and then link them to 'programs' directory before running experiments.\n"
+                exit 1
+        fi
+
+	echo -e "To-be-used tools/data found successfully!"
+
+fi
+
 #============================================
 # assembly and evaluate
 #=============================================

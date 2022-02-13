@@ -7,7 +7,7 @@ if [ "A" == "A" ];then
         echo "================================================================="
         echo "Check if to-be-used tools/data are properly linked..."
         echo "================================================================="
-        if [ -e $STAR ];then
+        if [ -e $zumis ];then
                 echo -e "Tool zUMIs found successfully!"
         else
                 echo -e "Tool zUMIs not found in directory 'programs'.\nPlease follow the instructions in 'Step 1: Download and Link Tools' to properly download and link all necessary tools to the directory 'programs'."
